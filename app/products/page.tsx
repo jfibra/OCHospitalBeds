@@ -107,22 +107,6 @@ const products = [
     category: "Bed Accessories",
     items: [
       {
-        id: "precision-side-rails",
-        name: "Precision Side Rails",
-        description:
-          "Advanced side rail system with intermediate support positions to help patients safely enter and exit the bed.",
-        images: [
-          { src: "/precision-side-rails.jpg", alt: "Precision side rails", caption: "Advanced safety side rails" },
-        ],
-        features: [
-          "Intermediate support positions",
-          "Reduces fall risk and caregiver injury",
-          "Easy-grip handles",
-          "Professional-grade construction",
-          "Universal bed compatibility",
-        ],
-      },
-      {
         id: "overbed-table",
         name: "Adjustable Overbed Table",
         description:
