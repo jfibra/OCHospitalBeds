@@ -142,7 +142,7 @@ export default function ContactForm({ initialType, initialProduct }: ContactForm
         <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-6">
           <h3 className="text-lg font-semibold text-red-800 mb-2">Error Sending Message</h3>
           <p className="text-red-700">
-            Sorry, there was an error sending your message. Please try again or call us directly at (312) 555-0123.
+            Sorry, there was an error sending your message. Please try again or call us directly at (949) 555-0123.
           </p>
         </div>
       )}
@@ -194,7 +194,7 @@ export default function ContactForm({ initialType, initialProduct }: ContactForm
               value={formData.phone}
               onChange={handleChange}
               className="w-full px-4 py-3 text-lg border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="(312) 555-0123"
+              placeholder="(949) 555-0123"
             />
           </div>
 

@@ -14,23 +14,23 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: "OCHospitalBeds.com - Hospital Bed Rentals in Chicago, IL",
+  title: "OCHospitalBeds.com - Hospital Bed Rentals",
   description:
-    "Reliable hospital bed and home medical equipment rentals delivered to your home in Chicago, Illinois. Serving seniors, caregivers, and families with quality medical equipment.",
-  keywords: "hospital bed rental, medical equipment rental, Chicago, Illinois, home healthcare, senior care",
+    "Reliable hospital bed and home medical equipment rentals delivered to your home. Serving seniors, caregivers, and families with quality medical equipment.",
+  keywords: "hospital bed rental, medical equipment rental, home healthcare, senior care",
   openGraph: {
-    title: "OCHospitalBeds.com - Hospital Bed Rentals in Chicago, IL",
+    title: "OCHospitalBeds.com - Hospital Bed Rentals",
     description:
-      "Reliable hospital bed and home medical equipment rentals delivered to your home in Chicago, Illinois.",
+      "Reliable hospital bed and home medical equipment rentals delivered to your home.",
     url: "https://ochospitalbeds.com",
     siteName: "OCHospitalBeds.com",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "OCHospitalBeds.com - Hospital Bed Rentals in Chicago, IL",
+    title: "OCHospitalBeds.com - Hospital Bed Rentals",
     description:
-      "Reliable hospital bed and home medical equipment rentals delivered to your home in Chicago, Illinois.",
+      "Reliable hospital bed and home medical equipment rentals delivered to your home.",
   },
   robots: {
     index: true,

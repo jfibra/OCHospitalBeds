@@ -19,7 +19,7 @@ export default function Header() {
               className="flex items-center gap-2 text-blue-700 hover:text-blue-800 font-medium"
             >
               <Phone size={16} />
-              Call: (312) 555-0123
+              Call: (949) 555-0123
             </a>
             <a
               href="mailto:info@ochospitalbeds.com"
@@ -37,7 +37,7 @@ export default function Header() {
             <Image src="/logo.png" alt="OCHospitalBeds.com Logo" width={50} height={50} className="w-12 h-12" />
             <div>
               <h1 className="text-xl font-bold text-blue-800">OCHospitalBeds</h1>
-              <p className="text-sm text-gray-600">Chicago Medical Rentals</p>
+              <p className="text-sm text-gray-600">Hospital Bed Rentals</p>
             </div>
           </Link>
 

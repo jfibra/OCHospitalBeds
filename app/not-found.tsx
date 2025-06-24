@@ -31,7 +31,7 @@ export default function NotFound() {
           <p className="text-gray-600 mb-4">If you're looking for medical equipment rentals, we're here to help.</p>
           <div className="space-y-2">
             <a href="tel:+1-312-555-0123" className="block text-blue-600 hover:text-blue-800 font-medium">
-              Call: (312) 555-0123
+              Call: (949) 555-0123
             </a>
             <a href="mailto:info@ochospitalbeds.com" className="block text-blue-600 hover:text-blue-800 font-medium">
               Email: info@ochospitalbeds.com

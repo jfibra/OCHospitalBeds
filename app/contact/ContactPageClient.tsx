@@ -25,7 +25,7 @@ function ContactPageContent() {
             <h3 className="text-xl font-semibold text-blue-900 mb-2">Call Us</h3>
             <p className="text-gray-600 mb-4">Speak with our team directly</p>
             <a href="tel:+1-312-555-0123" className="btn-primary">
-              (312) 555-0123
+              (949) 555-0123
             </a>
           </div>
 

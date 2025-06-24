@@ -6,7 +6,7 @@ import ProductImageGallery from "../components/ProductImageGallery"
 export const metadata: Metadata = {
   title: "Medical Equipment Rentals - Hospital Beds & More | OCHospitalBeds.com",
   description:
-    "Browse our selection of hospital beds, medical mattresses, accessories, and mobility aids available for rent in Chicago, Illinois.",
+    "Browse our selection of hospital beds, medical mattresses, accessories, and mobility aids available for rent.",
 }
 
 const products = [
@@ -20,7 +20,6 @@ const products = [
         description:
           "Designed for home care with a warm wood finish that blends seamlessly into your home environment. Perfect for long-term care and recovery.",
         images: [
-          { src: "/evenda-home-setup.jpg", alt: "Evenda Comfio in home setting", caption: "Comfortable home setup" },
           { src: "/evenda-bed-angle.jpg", alt: "Evenda Comfio side view", caption: "Side view showing controls" },
           { src: "/evenda-remote.jpg", alt: "Evenda remote control", caption: "Easy-to-use remote control" },
         ],
@@ -33,28 +32,8 @@ const products = [
         ],
       },
       {
-        id: "professional-hospital-bed",
-        name: "Professional Hospital Bed",
-        description:
-          "Advanced hospital bed with full electric controls and professional-grade features. Ideal for complex medical needs and recovery.",
-        images: [
-          {
-            src: "/professional-hospital-bed.jpg",
-            alt: "Professional hospital bed",
-            caption: "Full electric hospital bed",
-          },
-        ],
-        features: [
-          "Full electric adjustment (head, foot, height)",
-          "Trendelenburg and reverse positioning",
-          "Advanced safety features",
-          "Professional-grade construction",
-          "Compatible with all medical accessories",
-        ],
-      },
-      {
         id: "stryker-hospital-bed",
-        name: "Stryker Advanced Care Bed",
+        name: "Professional Hospital Bed",
         description:
           "Premium hospital bed with cutting-edge technology including iBed Awareness system and precision side rails for maximum safety and comfort.",
         images: [
@@ -178,42 +157,6 @@ const products = [
       },
     ],
   },
-  {
-    id: "mobility",
-    category: "Mobility & Transfer Aids",
-    items: [
-      {
-        id: "transfer-board",
-        name: "Patient Transfer Board",
-        description:
-          "Smooth, lightweight board designed to help safely transfer patients from bed to wheelchair or other surfaces.",
-        images: [
-          { src: "/patient-transfer-board.png", alt: "Patient transfer board", caption: "Smooth transfer surface" },
-        ],
-        features: [
-          "Smooth, low-friction surface",
-          "Lightweight yet sturdy design",
-          "Easy to sanitize",
-          "Multiple size options",
-          "Non-slip grips for safety",
-        ],
-      },
-      {
-        id: "bed-assist-rail",
-        name: "Bed Assist Rail",
-        description:
-          "Supportive rail that helps patients get in and out of bed independently while providing stability.",
-        images: [{ src: "/bed-assist-rail.png", alt: "Bed assist rail", caption: "Supportive bed rail system" }],
-        features: [
-          "Sturdy support for bed entry/exit",
-          "Adjustable height settings",
-          "Easy installation system",
-          "Non-slip base for stability",
-          "Comfortable grip handle",
-        ],
-      },
-    ],
-  },
 ]
 
 export default function ProductsPage() {
@@ -224,7 +167,7 @@ export default function ProductsPage() {
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6">Our Medical Equipment</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Quality hospital beds and medical equipment rentals for your home care needs in Chicago, Illinois. All
+            Quality hospital beds and medical equipment rentals for your home care needs. All
             equipment is professionally cleaned and maintained.
           </p>
         </div>
@@ -292,7 +235,7 @@ export default function ProductsPage() {
               href="tel:+1-312-555-0123"
               className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 font-semibold py-4 px-8 rounded-xl text-lg transition-colors duration-200"
             >
-              Call (312) 555-0123
+              Call (949) 555-0123
             </a>
           </div>
         </section>

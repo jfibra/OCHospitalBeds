@@ -15,7 +15,7 @@ export default function HomePage() {
                 What are you looking for today?
               </h1>
               <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed">
-                Quality hospital beds and medical equipment rentals delivered to your home in Chicago, Illinois.
+                Quality hospital beds and medical equipment rentals delivered to your home.
               </p>
 
               {/* Product Category Buttons */}
@@ -43,14 +43,6 @@ export default function HomePage() {
                   <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">🛌</div>
                   <h3 className="text-2xl font-bold text-blue-800 group-hover:text-blue-900">Mattresses</h3>
                   <p className="text-gray-600 mt-2">Variety of comfort levels</p>
-                </Link>
-                <Link
-                  href="/products#mobility"
-                  className="bg-white hover:bg-blue-50 border-2 border-blue-200 hover:border-blue-300 rounded-2xl p-8 text-center transition-all duration-300 group shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                >
-                  <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">♿</div>
-                  <h3 className="text-2xl font-bold text-blue-800 group-hover:text-blue-900">Mobility Aids</h3>
-                  <p className="text-gray-600 mt-2">Walkers, wheelchairs & more</p>
                 </Link>
               </div>
 
@@ -84,7 +76,7 @@ export default function HomePage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Why Choose OCHospitalBeds?</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We're committed to providing Chicago families with reliable, clean, and affordable medical equipment
+              We're committed to providing families with reliable, clean, and affordable medical equipment
               rentals.
             </p>
           </div>
@@ -96,7 +88,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-2xl font-semibold text-blue-900 mb-3">Free Delivery & Setup</h3>
               <p className="text-lg text-gray-600">
-                We deliver and set up your equipment at no extra charge throughout the Chicago area.
+                We deliver and set up your equipment at no extra charge.
               </p>
             </div>
 
@@ -163,7 +155,7 @@ export default function HomePage() {
                 <Phone className="text-green-600" size={32} />
               </div>
               <h3 className="text-xl font-semibold text-blue-900 mb-2">Call Now</h3>
-              <p className="text-gray-600">(312) 555-0123</p>
+              <p className="text-gray-600">(949) 555-0123</p>
             </a>
           </div>
         </div>
@@ -187,7 +179,7 @@ export default function HomePage() {
                 "The team at OCHospitalBeds made everything so easy. They delivered the hospital bed the same day and
                 set it up perfectly for my mother."
               </p>
-              <p className="font-semibold text-blue-900">- Sarah M., Chicago</p>
+              <p className="font-semibold text-blue-900">- Sarah M., Southern California</p>
             </div>
 
             <div className="card">

@@ -3,9 +3,9 @@ import Image from "next/image"
 import { Shield, Heart, Users, MapPin } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "About Us - OCHospitalBeds.com | Chicago Medical Equipment Rentals",
+  title: "About Us - OCHospitalBeds.com | Medical Equipment Rentals",
   description:
-    "Learn about OCHospitalBeds.com and our mission to provide quality medical equipment rentals to Chicago families, seniors, and caregivers.",
+    "Learn about OCHospitalBeds.com and our mission to provide quality medical equipment rentals to families, seniors, and caregivers.",
 }
 
 export default function AboutPage() {
@@ -16,7 +16,7 @@ export default function AboutPage() {
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6">About OCHospitalBeds</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We're dedicated to helping Chicago families and caregivers provide the best possible care at home with
+            We're dedicated to helping families and caregivers provide the best possible care at home with
             quality medical equipment rentals.
           </p>
         </div>
@@ -28,7 +28,7 @@ export default function AboutPage() {
               <h2 className="text-3xl font-bold text-blue-900 mb-6">Our Mission</h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                 At OCHospitalBeds, we believe that quality healthcare should be accessible in the comfort of your own
-                home. Since 2020, we've been serving the Chicago community by providing clean, reliable, and affordable
+                home. Since 2020, we've been serving the community by providing clean, reliable, and affordable
                 medical equipment rentals.
               </p>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
@@ -68,7 +68,7 @@ export default function AboutPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-blue-900 mb-4">Who We Help</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              We're proud to serve diverse members of the Chicago community with their medical equipment needs.
+              We're proud to serve diverse members of the community with their medical equipment needs.
             </p>
           </div>
 
@@ -123,7 +123,7 @@ export default function AboutPage() {
             <div className="relative">
               <Image
                 src="/chicago-service-map.png"
-                alt="Chicago area service map"
+                alt="area service map"
                 width={600}
                 height={400}
                 className="rounded-2xl shadow-lg"
@@ -135,21 +135,18 @@ export default function AboutPage() {
                 Service Area
               </h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                We proudly serve Chicago, Illinois and the surrounding metropolitan area. Our delivery team knows the
+                We proudly serve Southern California and the surrounding metropolitan area. Our delivery team knows the
                 area well and can typically provide same-day or next-day delivery and setup.
               </p>
 
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-blue-900">Areas We Serve:</h3>
+                <h3 className="text-xl font-semibold text-blue-900">Counties We Serve:</h3>
                 <div className="grid grid-cols-2 gap-2 text-lg text-gray-600">
-                  <div>• Chicago</div>
-                  <div>• Evanston</div>
-                  <div>• Oak Park</div>
-                  <div>• Cicero</div>
-                  <div>• Berwyn</div>
-                  <div>• Skokie</div>
-                  <div>• Des Plaines</div>
-                  <div>• Park Ridge</div>
+                  <div>• Orange</div>
+                  <div>• Los Angeles</div>
+                  <div>• San Diego</div>
+                  <div>• Riverside</div>
+                  <div>• San Bernadino</div>
                 </div>
                 <p className="text-lg text-gray-600 mt-4">
                   Don't see your area listed?{" "}
@@ -206,7 +203,7 @@ export default function AboutPage() {
               <div>
                 <h3 className="text-xl font-semibold text-blue-900 mb-2">Community Focus</h3>
                 <p className="text-gray-600">
-                  As a local Chicago business, we're committed to serving our community and building lasting
+                  As a local business, we're committed to serving our community and building lasting
                   relationships with our customers.
                 </p>
               </div>
