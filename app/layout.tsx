@@ -6,6 +6,8 @@ import Header from "./components/Header"
 import Footer from "./components/Footer"
 import ScrollToTop from "./components/ScrollToTop"
 import PageTransition from "./components/PageTransition"
+import GoogleAnalytics from "./components/GoogleAnalytics"
+import { Suspense } from "react"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -89,7 +91,7 @@ export const metadata: Metadata = {
     // yahoo: "your-yahoo-verification-code",
   },
   category: "Healthcare",
-    generator: 'v0.dev'
+  generator: "v0.dev",
 }
 
 export default function RootLayout({
@@ -108,9 +110,12 @@ export default function RootLayout({
         <meta name="ICBM" content="34.0522, -118.2437" />
       </head>
       <body className={`${poppins.className} bg-white text-gray-900`}>
+        <GoogleAnalytics />
         <PageTransition />
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <Suspense>
+          <main className="min-h-screen">{children}</main>
+        </Suspense>
         <Footer />
         <ScrollToTop />
       </body>
