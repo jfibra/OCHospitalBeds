@@ -5,7 +5,7 @@ export default function StructuredData() {
     name: "OCHospitalBeds",
     description: "Professional hospital bed and medical equipment rentals in Southern California",
     url: "https://ochospitalbeds.com",
-    telephone: "+1-949-555-0123",
+    telephone: "+1-949-298-6651",
     address: {
       "@type": "PostalAddress",
       addressRegion: "CA",

@@ -24,8 +24,8 @@ function ContactPageContent() {
             </div>
             <h3 className="text-xl font-semibold text-blue-900 mb-2">Call Us</h3>
             <p className="text-gray-600 mb-4">Speak with our team directly</p>
-            <a href="tel:+1-312-555-0123" className="btn-primary">
-              (949) 555-0123
+            <a href="tel:+1-312-298-6651" className="btn-primary">
+              (949) 298-6651
             </a>
           </div>
 
@@ -45,7 +45,7 @@ function ContactPageContent() {
               <MapPin className="text-blue-600" size={32} />
             </div>
             <h3 className="text-xl font-semibold text-blue-900 mb-2">Service Area</h3>
-            <p className="text-gray-600 mb-4">Chicago & surrounding areas</p>
+            <p className="text-gray-600 mb-4">All of southern california</p>
             <span className="text-blue-600 font-medium">Free Delivery</span>
           </div>
 

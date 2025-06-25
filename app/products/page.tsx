@@ -132,24 +132,14 @@ const products = [
           "Height and tilt adjustable table that rolls smoothly over the bed for eating, reading, and activities.",
         images: [
           {
-            src: "/overbed-table-main.png",
+            src: "/overbed-table-main.jpg",
             alt: "Adjustable overbed table",
             caption: "Height and tilt adjustable design",
           },
           {
-            src: "/overbed-table-adjustment.png",
+            src: "/overbed-table-adjustment.jpg",
             alt: "Overbed table adjustment mechanism",
             caption: "Easy height and tilt controls",
-          },
-          {
-            src: "/overbed-table-use.png",
-            alt: "Patient using overbed table",
-            caption: "Comfortable dining and activities",
-          },
-          {
-            src: "/overbed-table-storage.png",
-            alt: "Overbed table with storage",
-            caption: "Built-in storage compartment",
           },
         ],
         features: [
@@ -158,40 +148,6 @@ const products = [
           "Smooth-rolling casters",
           "Easy-to-clean surface",
           "Sturdy construction",
-        ],
-      },
-      {
-        id: "bed-trapeze",
-        name: "Bed Trapeze Bar",
-        description: "Overhead support bar to help patients reposition themselves in bed and transfer safely.",
-        images: [
-          {
-            src: "/trapeze-bar-main.png",
-            alt: "Bed trapeze bar system",
-            caption: "Overhead support system",
-          },
-          {
-            src: "/trapeze-bar-mounting.png",
-            alt: "Trapeze bar mounting system",
-            caption: "Secure bed frame attachment",
-          },
-          {
-            src: "/trapeze-bar-use.png",
-            alt: "Patient using trapeze bar",
-            caption: "Assisted repositioning support",
-          },
-          {
-            src: "/trapeze-bar-adjustment.png",
-            alt: "Trapeze bar adjustment details",
-            caption: "Adjustable chain and grip handle",
-          },
-        ],
-        features: [
-          "Sturdy overhead support",
-          "Adjustable chain length",
-          "Easy-grip handle design",
-          "Universal mounting system",
-          "Weight-tested for safety",
         ],
       },
     ],
@@ -271,10 +227,10 @@ export default function ProductsPage() {
               Get Free Consultation
             </Link>
             <a
-              href="tel:+1-312-555-0123"
+              href="tel:+1-312-298-6651"
               className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 font-semibold py-4 px-8 rounded-xl text-lg transition-colors duration-200"
             >
-              Call (949) 555-0123
+              Call (949) 298-6651
             </a>
           </div>
         </section>

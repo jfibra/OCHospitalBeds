@@ -153,12 +153,12 @@ export default function HomePage() {
               <p className="text-gray-600">Send us your questions anytime</p>
             </Link>
 
-            <a href="tel:+1-949-555-0123" className="card hover:bg-blue-50 text-center group">
+            <a href="tel:+1-949-298-6651" className="card hover:bg-blue-50 text-center group">
               <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-green-200 transition-colors">
                 <Phone className="text-green-600" size={32} />
               </div>
               <h3 className="text-xl font-semibold text-blue-900 mb-2">Call Now</h3>
-              <p className="text-gray-600">(949) 555-0123</p>
+              <p className="text-gray-600">(949) 298-6651</p>
             </a>
           </div>
         </div>

@@ -122,7 +122,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
               <Image
-                src="/southern-california-service-map.png"
+                src="/southern-california-service-map.jpg"
                 alt="Southern California service area map showing Orange, Los Angeles, San Diego, Riverside, and San Bernardino counties"
                 width={600}
                 height={400}
