@@ -71,9 +71,19 @@ const products = [
           "Advanced alternating pressure mattress system that provides instant setup for pressure therapy without moving the patient.",
         images: [
           {
-            src: "/pressure-relief-mattress.png",
-            alt: "Pressure relief mattress",
-            caption: "Advanced pressure relief system",
+            src: "/pressure-relief-mattress-main.png",
+            alt: "AtmosAir Velaris pressure relief mattress",
+            caption: "Advanced alternating pressure system",
+          },
+          {
+            src: "/pressure-relief-mattress-setup.png",
+            alt: "Pressure mattress home setup",
+            caption: "Complete home care installation",
+          },
+          {
+            src: "/pressure-relief-mattress-detail.png",
+            alt: "Pressure mattress surface detail",
+            caption: "Alternating pressure cells",
           },
         ],
         features: [
@@ -90,7 +100,16 @@ const products = [
         description:
           "Premium foam mattress designed specifically for hospital beds with pressure-relieving properties.",
         images: [
-          { src: "/foam-mattress.png", alt: "High-density foam mattress", caption: "Medical-grade foam mattress" },
+          {
+            src: "/foam-mattress-main.png",
+            alt: "High-density foam mattress",
+            caption: "Medical-grade foam construction",
+          },
+          {
+            src: "/foam-mattress-cover.png",
+            alt: "Waterproof mattress cover",
+            caption: "Easy-clean antimicrobial cover",
+          },
         ],
         features: [
           "High-density medical-grade foam",
@@ -113,9 +132,24 @@ const products = [
           "Height and tilt adjustable table that rolls smoothly over the bed for eating, reading, and activities.",
         images: [
           {
-            src: "/adjustable-overbed-table.png",
+            src: "/overbed-table-main.png",
             alt: "Adjustable overbed table",
-            caption: "Height and tilt adjustable",
+            caption: "Height and tilt adjustable design",
+          },
+          {
+            src: "/overbed-table-adjustment.png",
+            alt: "Overbed table adjustment mechanism",
+            caption: "Easy height and tilt controls",
+          },
+          {
+            src: "/overbed-table-use.png",
+            alt: "Patient using overbed table",
+            caption: "Comfortable dining and activities",
+          },
+          {
+            src: "/overbed-table-storage.png",
+            alt: "Overbed table with storage",
+            caption: "Built-in storage compartment",
           },
         ],
         features: [
@@ -130,7 +164,28 @@ const products = [
         id: "bed-trapeze",
         name: "Bed Trapeze Bar",
         description: "Overhead support bar to help patients reposition themselves in bed and transfer safely.",
-        images: [{ src: "/hospital-bed-trapeze.png", alt: "Bed trapeze bar", caption: "Overhead support system" }],
+        images: [
+          {
+            src: "/trapeze-bar-main.png",
+            alt: "Bed trapeze bar system",
+            caption: "Overhead support system",
+          },
+          {
+            src: "/trapeze-bar-mounting.png",
+            alt: "Trapeze bar mounting system",
+            caption: "Secure bed frame attachment",
+          },
+          {
+            src: "/trapeze-bar-use.png",
+            alt: "Patient using trapeze bar",
+            caption: "Assisted repositioning support",
+          },
+          {
+            src: "/trapeze-bar-adjustment.png",
+            alt: "Trapeze bar adjustment details",
+            caption: "Adjustable chain and grip handle",
+          },
+        ],
         features: [
           "Sturdy overhead support",
           "Adjustable chain length",
@@ -151,8 +206,8 @@ export default function ProductsPage() {
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6">Our Medical Equipment</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Quality hospital beds and medical equipment rentals for your home care needs. All
-            equipment is professionally cleaned and maintained.
+            Quality hospital beds and medical equipment rentals for your home care needs. All equipment is
+            professionally cleaned and maintained.
           </p>
         </div>
 

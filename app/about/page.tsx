@@ -16,8 +16,8 @@ export default function AboutPage() {
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6">About OCHospitalBeds</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We're dedicated to helping families and caregivers provide the best possible care at home with
-            quality medical equipment rentals.
+            We're dedicated to helping families and caregivers provide the best possible care at home with quality
+            medical equipment rentals.
           </p>
         </div>
 
@@ -28,8 +28,8 @@ export default function AboutPage() {
               <h2 className="text-3xl font-bold text-blue-900 mb-6">Our Mission</h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                 At OCHospitalBeds, we believe that quality healthcare should be accessible in the comfort of your own
-                home. Since 2020, we've been serving the community by providing clean, reliable, and affordable
-                medical equipment rentals.
+                home. Since 2020, we've been serving the community by providing clean, reliable, and affordable medical
+                equipment rentals.
               </p>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                 Our team understands the challenges that come with caring for loved ones, especially seniors who prefer
@@ -53,8 +53,8 @@ export default function AboutPage() {
             </div>
             <div className="relative">
               <Image
-                src="/healthcare-team.png"
-                alt="Healthcare professional setting up medical equipment"
+                src="/healthcare-team.jpg"
+                alt="Professional healthcare team at OCHospitalBeds"
                 width={600}
                 height={400}
                 className="rounded-2xl shadow-lg"
@@ -107,8 +107,8 @@ export default function AboutPage() {
           {/* Additional image showing senior care */}
           <div className="text-center">
             <Image
-              src="/senior-care-home.png"
-              alt="Senior patient comfortable at home with medical equipment"
+              src="/senior-care-home.jpg"
+              alt="Healthcare professional providing compassionate care to senior patient at home"
               width={800}
               height={400}
               className="rounded-2xl shadow-lg mx-auto"
@@ -122,8 +122,8 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
               <Image
-                src="/chicago-service-map.png"
-                alt="area service map"
+                src="/southern-california-service-map.png"
+                alt="Southern California service area map showing Orange, Los Angeles, San Diego, Riverside, and San Bernardino counties"
                 width={600}
                 height={400}
                 className="rounded-2xl shadow-lg"
@@ -203,8 +203,8 @@ export default function AboutPage() {
               <div>
                 <h3 className="text-xl font-semibold text-blue-900 mb-2">Community Focus</h3>
                 <p className="text-gray-600">
-                  As a local business, we're committed to serving our community and building lasting
-                  relationships with our customers.
+                  As a local business, we're committed to serving our community and building lasting relationships with
+                  our customers.
                 </p>
               </div>
             </div>
