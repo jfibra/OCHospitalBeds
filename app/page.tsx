@@ -1,10 +1,12 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Phone, Video, Mail, Shield, Truck, Clock, Star } from "lucide-react"
+import StructuredData from "./components/StructuredData"
 
 export default function HomePage() {
   return (
     <>
+      <StructuredData />
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-50 via-sky-50 to-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/placeholder.svg?height=800&width=1200')] opacity-5"></div>
@@ -12,10 +14,11 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-blue-900 mb-6 leading-tight">
-                What are you looking for today?
+                Hospital Bed Rentals in Southern California
               </h1>
               <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed">
-                Quality hospital beds and medical equipment rentals delivered to your home.
+                Quality hospital beds and medical equipment rentals delivered to your home throughout Orange County, Los
+                Angeles, San Diego, Riverside, and San Bernardino.
               </p>
 
               {/* Product Category Buttons */}
@@ -25,7 +28,7 @@ export default function HomePage() {
                   className="bg-white hover:bg-blue-50 border-2 border-blue-200 hover:border-blue-300 rounded-2xl p-8 text-center transition-all duration-300 group shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
                   <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">🛏️</div>
-                  <h3 className="text-2xl font-bold text-blue-800 group-hover:text-blue-900">Hospital Beds</h3>
+                  <h2 className="text-2xl font-bold text-blue-800 group-hover:text-blue-900">Hospital Beds</h2>
                   <p className="text-gray-600 mt-2">Professional & home-style beds</p>
                 </Link>
                 <Link
@@ -33,7 +36,7 @@ export default function HomePage() {
                   className="bg-white hover:bg-blue-50 border-2 border-blue-200 hover:border-blue-300 rounded-2xl p-8 text-center transition-all duration-300 group shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
                   <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">🛡️</div>
-                  <h3 className="text-2xl font-bold text-blue-800 group-hover:text-blue-900">Accessories</h3>
+                  <h2 className="text-2xl font-bold text-blue-800 group-hover:text-blue-900">Accessories</h2>
                   <p className="text-gray-600 mt-2">Bedside tables, IV poles & more</p>
                 </Link>
                 <Link
@@ -41,7 +44,7 @@ export default function HomePage() {
                   className="bg-white hover:bg-blue-50 border-2 border-blue-200 hover:border-blue-300 rounded-2xl p-8 text-center transition-all duration-300 group shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
                   <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">🛌</div>
-                  <h3 className="text-2xl font-bold text-blue-800 group-hover:text-blue-900">Mattresses</h3>
+                  <h2 className="text-2xl font-bold text-blue-800 group-hover:text-blue-900">Mattresses</h2>
                   <p className="text-gray-600 mt-2">Variety of comfort levels</p>
                 </Link>
               </div>
@@ -59,7 +62,7 @@ export default function HomePage() {
             <div className="relative">
               <Image
                 src="/hero-image.png"
-                alt="Clean living room with hospital bed setup"
+                alt="Professional hospital bed setup in clean home environment - OCHospitalBeds medical equipment rental"
                 width={600}
                 height={400}
                 className="rounded-2xl shadow-2xl"
@@ -76,8 +79,8 @@ export default function HomePage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Why Choose OCHospitalBeds?</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We're committed to providing families with reliable, clean, and affordable medical equipment
-              rentals.
+              We're committed to providing Southern California families with reliable, clean, and affordable medical
+              equipment rentals.
             </p>
           </div>
 
@@ -88,7 +91,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-2xl font-semibold text-blue-900 mb-3">Free Delivery & Setup</h3>
               <p className="text-lg text-gray-600">
-                We deliver and set up your equipment at no extra charge.
+                We deliver and set up your equipment at no extra charge throughout Southern California.
               </p>
             </div>
 
@@ -150,7 +153,7 @@ export default function HomePage() {
               <p className="text-gray-600">Send us your questions anytime</p>
             </Link>
 
-            <a href="tel:+1-312-555-0123" className="card hover:bg-blue-50 text-center group">
+            <a href="tel:+1-949-555-0123" className="card hover:bg-blue-50 text-center group">
               <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-green-200 transition-colors">
                 <Phone className="text-green-600" size={32} />
               </div>
@@ -169,7 +172,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="card">
+            <article className="card">
               <div className="flex items-center mb-4">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="text-yellow-400 fill-current" size={20} />
@@ -179,10 +182,10 @@ export default function HomePage() {
                 "The team at OCHospitalBeds made everything so easy. They delivered the hospital bed the same day and
                 set it up perfectly for my mother."
               </p>
-              <p className="font-semibold text-blue-900">- Sarah M., Southern California</p>
-            </div>
+              <p className="font-semibold text-blue-900">- Sarah M., Orange County</p>
+            </article>
 
-            <div className="card">
+            <article className="card">
               <div className="flex items-center mb-4">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="text-yellow-400 fill-current" size={20} />
@@ -192,10 +195,10 @@ export default function HomePage() {
                 "Professional service and clean equipment. The bed was exactly what we needed for dad's recovery at
                 home."
               </p>
-              <p className="font-semibold text-blue-900">- Michael R., Evanston</p>
-            </div>
+              <p className="font-semibold text-blue-900">- Michael R., Los Angeles</p>
+            </article>
 
-            <div className="card">
+            <article className="card">
               <div className="flex items-center mb-4">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="text-yellow-400 fill-current" size={20} />
@@ -205,8 +208,8 @@ export default function HomePage() {
                 "Great customer service and fair prices. They were available whenever we had questions about the
                 equipment."
               </p>
-              <p className="font-semibold text-blue-900">- Linda K., Oak Park</p>
-            </div>
+              <p className="font-semibold text-blue-900">- Linda K., San Diego</p>
+            </article>
           </div>
         </div>
       </section>
