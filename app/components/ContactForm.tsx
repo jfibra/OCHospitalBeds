@@ -53,8 +53,11 @@ export default function ContactForm({ initialType, initialProduct }: ContactForm
         body: JSON.stringify(formData),
       })
 
-      if (response.ok) {
+      const data = await response.json()
+
+      if (response.ok && data.success) {
         setSubmitStatus("success")
+        // Reset form on success
         setFormData({
           name: "",
           email: "",
@@ -65,8 +68,18 @@ export default function ContactForm({ initialType, initialProduct }: ContactForm
           product: initialProduct || "",
           currentUrl: window.location.href,
         })
+
+        // Track successful form submission with Google Analytics
+        if (typeof window !== "undefined" && (window as any).gtag) {
+          ;(window as any).gtag("event", "form_submit", {
+            event_category: "Contact",
+            event_label: formData.inquiryType || "general",
+            value: 1,
+          })
+        }
       } else {
         setSubmitStatus("error")
+        console.error("Form submission failed:", data.message || data.error)
       }
     } catch (error) {
       console.error("Form submission error:", error)
@@ -133,17 +146,34 @@ export default function ContactForm({ initialType, initialProduct }: ContactForm
 
       {submitStatus === "success" && (
         <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
-          <h3 className="text-lg font-semibold text-green-800 mb-2">Message Sent Successfully!</h3>
-          <p className="text-green-700">Thank you for contacting us. We'll get back to you within 24 hours.</p>
+          <h3 className="text-lg font-semibold text-green-800 mb-2">Message Sent Successfully! ✅</h3>
+          <p className="text-green-700">
+            Thank you for contacting OCHospitalBeds! We've received your message and will respond within 24 hours. For
+            urgent needs, please call us at (949) 298-6651.
+          </p>
         </div>
       )}
 
       {submitStatus === "error" && (
         <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-6">
-          <h3 className="text-lg font-semibold text-red-800 mb-2">Error Sending Message</h3>
-          <p className="text-red-700">
-            Sorry, there was an error sending your message. Please try again or call us directly at (949) 298-6651.
+          <h3 className="text-lg font-semibold text-red-800 mb-2">Unable to Send Message</h3>
+          <p className="text-red-700 mb-3">
+            We're experiencing technical difficulties with our contact form. Please try one of these alternatives:
           </p>
+          <div className="space-y-2">
+            <p className="text-red-700">
+              📞 <strong>Call us directly:</strong>{" "}
+              <a href="tel:+1-949-298-6651" className="underline">
+                (949) 298-6651
+              </a>
+            </p>
+            <p className="text-red-700">
+              ✉️ <strong>Email us:</strong>{" "}
+              <a href="mailto:info@ochospitalbeds.com" className="underline">
+                info@ochospitalbeds.com
+              </a>
+            </p>
+          </div>
         </div>
       )}
 

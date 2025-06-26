@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error: "Email service configuration error",
-          debug: "NEXT_RESEND_API_KEY not found in environment variables",
+          message: "Email service is not properly configured. Please try calling us directly at (949) 298-6651.",
         },
         { status: 500 },
       )
@@ -25,37 +25,122 @@ export async function POST(request: NextRequest) {
     if (!name || !email || !message) {
       return NextResponse.json(
         {
-          error: "Name, email, and message are required",
-          debug: "Missing required fields in request body",
+          error: "Missing required fields",
+          message: "Please fill in your name, email, and message.",
+        },
+        { status: 400 },
+      )
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        {
+          error: "Invalid email format",
+          message: "Please enter a valid email address.",
         },
         { status: 400 },
       )
     }
 
     // Create email content
-    const emailSubject = `New ${inquiryType || "General"} Inquiry from ${name}`
+    const emailSubject = `New ${inquiryType || "General"} Inquiry from ${name} - OCHospitalBeds.com`
 
     const emailContent = `
-      <h2>New Contact Form Submission</h2>
-      <p><strong>Inquiry Type:</strong> ${inquiryType || "General Inquiry"}</p>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ""}
-      <p><strong>Preferred Contact Method:</strong> ${contactMethod || "Email"}</p>
-      ${product ? `<p><strong>Product Interest:</strong> ${product}</p>` : ""}
-      <p><strong>Message:</strong></p>
-      <p>${message.replace(/\n/g, "<br>")}</p>
-      ${currentUrl ? `<p><strong>Page URL:</strong> ${currentUrl}</p>` : ""}
-      <hr>
-      <p><em>Sent from OCHospitalBeds.com contact form</em></p>
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f8fafc;">
+        <div style="background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+          <div style="text-align: center; margin-bottom: 30px;">
+            <h1 style="color: #1e40af; margin: 0; font-size: 24px;">New Contact Form Submission</h1>
+            <p style="color: #64748b; margin: 10px 0 0 0;">OCHospitalBeds.com</p>
+          </div>
+          
+          <div style="background-color: #eff6ff; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+            <h2 style="color: #1e40af; margin: 0 0 15px 0; font-size: 18px;">Contact Information</h2>
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr>
+                <td style="padding: 8px 0; font-weight: bold; color: #374151; width: 140px;">Inquiry Type:</td>
+                <td style="padding: 8px 0; color: #1f2937;">${inquiryType || "General Inquiry"}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; font-weight: bold; color: #374151;">Name:</td>
+                <td style="padding: 8px 0; color: #1f2937;">${name}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; font-weight: bold; color: #374151;">Email:</td>
+                <td style="padding: 8px 0; color: #1f2937;"><a href="mailto:${email}" style="color: #2563eb;">${email}</a></td>
+              </tr>
+              ${
+                phone
+                  ? `
+              <tr>
+                <td style="padding: 8px 0; font-weight: bold; color: #374151;">Phone:</td>
+                <td style="padding: 8px 0; color: #1f2937;"><a href="tel:${phone}" style="color: #2563eb;">${phone}</a></td>
+              </tr>
+              `
+                  : ""
+              }
+              <tr>
+                <td style="padding: 8px 0; font-weight: bold; color: #374151;">Contact Method:</td>
+                <td style="padding: 8px 0; color: #1f2937;">${contactMethod || "Email"}</td>
+              </tr>
+              ${
+                product
+                  ? `
+              <tr>
+                <td style="padding: 8px 0; font-weight: bold; color: #374151;">Product Interest:</td>
+                <td style="padding: 8px 0; color: #1f2937;">${product}</td>
+              </tr>
+              `
+                  : ""
+              }
+            </table>
+          </div>
+
+          <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+            <h3 style="color: #1e40af; margin: 0 0 15px 0; font-size: 16px;">Message:</h3>
+            <div style="color: #374151; line-height: 1.6; white-space: pre-wrap;">${message}</div>
+          </div>
+
+          ${
+            currentUrl
+              ? `
+          <div style="border-top: 1px solid #e5e7eb; padding-top: 15px; margin-top: 20px;">
+            <p style="color: #6b7280; font-size: 14px; margin: 0;">
+              <strong>Page URL:</strong> <a href="${currentUrl}" style="color: #2563eb;">${currentUrl}</a>
+            </p>
+            <p style="color: #6b7280; font-size: 14px; margin: 5px 0 0 0;">
+              <strong>Submitted:</strong> ${new Date().toLocaleString("en-US", {
+                timeZone: "America/Los_Angeles",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+                timeZoneName: "short",
+              })}
+            </p>
+          </div>
+          `
+              : ""
+          }
+        </div>
+        
+        <div style="text-align: center; margin-top: 20px;">
+          <p style="color: #6b7280; font-size: 12px; margin: 0;">
+            This email was sent from the OCHospitalBeds.com contact form
+          </p>
+        </div>
+      </div>
     `
 
     console.log("Attempting to send email with Resend...")
     console.log("Subject:", emailSubject)
+    console.log("From email: info@ochospitalbeds.com")
 
-    // Send email using Resend's verified domain (temporary solution)
+    // Send email using your verified domain
     const { data, error } = await resend.emails.send({
-      from: "OCHospitalBeds <onboarding@resend.dev>", // Using Resend's verified domain
+      from: "OCHospitalBeds Contact Form <info@ochospitalbeds.com>",
       to: ["info@ochospitalbeds.com"],
       subject: emailSubject,
       html: emailContent,
@@ -67,12 +152,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error: "Failed to send email",
-          debug: {
-            resendError: error,
-            apiKeyExists: !!process.env.NEXT_RESEND_API_KEY,
-            apiKeyLength: process.env.NEXT_RESEND_API_KEY?.length || 0,
-            note: "Using Resend's default domain (onboarding@resend.dev) - verify ochospitalbeds.com domain for custom sender",
-          },
+          message:
+            "We're experiencing technical difficulties. Please call us directly at (949) 298-6651 or email info@ochospitalbeds.com.",
         },
         { status: 500 },
       )
@@ -81,14 +162,9 @@ export async function POST(request: NextRequest) {
     console.log("Email sent successfully:", data)
     return NextResponse.json(
       {
-        message: "Email sent successfully",
+        success: true,
+        message: "Thank you for contacting us! We'll get back to you within 24 hours.",
         id: data?.id,
-        debug: {
-          success: true,
-          emailId: data?.id,
-          timestamp: new Date().toISOString(),
-          note: "Email sent from onboarding@resend.dev - verify ochospitalbeds.com domain for custom sender",
-        },
       },
       { status: 200 },
     )
@@ -97,68 +173,32 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         error: "Internal server error",
-        debug: {
-          errorMessage: error instanceof Error ? error.message : "Unknown error",
-          errorStack: error instanceof Error ? error.stack : null,
-          apiKeyExists: !!process.env.NEXT_RESEND_API_KEY,
-        },
+        message: "Something went wrong. Please try again or call us at (949) 298-6651.",
       },
       { status: 500 },
     )
   }
 }
 
-// Add a GET endpoint for testing Resend connection
+// Health check endpoint
 export async function GET() {
   try {
     if (!process.env.NEXT_RESEND_API_KEY) {
       return NextResponse.json({
         status: "error",
-        message: "NEXT_RESEND_API_KEY not found",
-        debug: {
-          envVarExists: false,
-          timestamp: new Date().toISOString(),
-        },
+        message: "Email service not configured",
       })
     }
 
-    const resend = new Resend(process.env.NEXT_RESEND_API_KEY)
-
-    // Test the connection by attempting to get domains
-    try {
-      const domains = await resend.domains.list()
-      return NextResponse.json({
-        status: "success",
-        message: "Resend API connection successful",
-        debug: {
-          apiKeyExists: true,
-          apiKeyLength: process.env.NEXT_RESEND_API_KEY.length,
-          domainsCount: domains.data?.length || 0,
-          domains: domains.data?.map((d) => ({ name: d.name, status: d.status })) || [],
-          timestamp: new Date().toISOString(),
-          note: "Using onboarding@resend.dev for now - add ochospitalbeds.com domain for custom sender",
-        },
-      })
-    } catch (apiError) {
-      return NextResponse.json({
-        status: "error",
-        message: "Resend API connection failed",
-        debug: {
-          apiKeyExists: true,
-          apiKeyLength: process.env.NEXT_RESEND_API_KEY.length,
-          error: apiError instanceof Error ? apiError.message : "Unknown API error",
-          timestamp: new Date().toISOString(),
-        },
-      })
-    }
+    return NextResponse.json({
+      status: "success",
+      message: "Contact form service is ready",
+      timestamp: new Date().toISOString(),
+    })
   } catch (error) {
     return NextResponse.json({
       status: "error",
-      message: "Server error during connection test",
-      debug: {
-        error: error instanceof Error ? error.message : "Unknown error",
-        timestamp: new Date().toISOString(),
-      },
+      message: "Service unavailable",
     })
   }
 }
