@@ -11,7 +11,7 @@ export default function FeaturedBundles() {
       name: "Basic Bundle",
       price: 350,
       popular: false,
-      image: "/basic-bundle-image.png",
+      image: "/basic-bundle-showcase.png",
       description: "Perfect for basic home care needs",
       includes: [
         "Evenda Comfio Home Care Bed",
@@ -26,7 +26,7 @@ export default function FeaturedBundles() {
       name: "Advanced Bundle",
       price: 550,
       popular: true,
-      image: "/advanced-bundle-image.png",
+      image: "/advanced-bundle-showcase.png",
       description: "Complete care solution with premium features",
       includes: [
         "Professional Hospital Bed with iBed Awareness",
@@ -67,10 +67,10 @@ export default function FeaturedBundles() {
             <div className="relative mb-4">
               <Image
                 src={bundle.image || "/placeholder.svg"}
-                alt={`${bundle.name} - Hospital bed rental package`}
+                alt={`${bundle.name} - Hospital bed rental package showing all included equipment`}
                 width={300}
                 height={200}
-                className="w-full h-32 object-cover rounded-lg"
+                className="w-full h-40 object-contain rounded-lg bg-gray-50"
               />
             </div>
 
