@@ -119,43 +119,32 @@ export default function AboutPage() {
 
         {/* Service Area Section */}
         <section className="mb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative">
-              <Image
-                src="/southern-california-service-map.jpg"
-                alt="Southern California service area map showing Orange, Los Angeles, San Diego, Riverside, and San Bernardino counties"
-                width={600}
-                height={400}
-                className="rounded-2xl shadow-lg"
-              />
-            </div>
-            <div>
-              <h2 className="text-3xl font-bold text-blue-900 mb-6">
-                <MapPin className="inline-block mr-3 text-blue-600" size={36} />
-                Service Area
-              </h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                We proudly serve Southern California and the surrounding metropolitan area. Our delivery team knows the
-                area well and can typically provide same-day or next-day delivery and setup.
-              </p>
+          <div className="text-center">
+            <h2 className="text-3xl font-bold text-blue-900 mb-6">
+              <MapPin className="inline-block mr-3 text-blue-600" size={36} />
+              Service Area
+            </h2>
+            <p className="text-lg text-gray-600 mb-6 leading-relaxed max-w-3xl mx-auto">
+              We proudly serve Southern California and the surrounding metropolitan area. Our delivery team knows the
+              area well and can typically provide same-day or next-day delivery and setup.
+            </p>
 
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-blue-900">Counties We Serve:</h3>
-                <div className="grid grid-cols-2 gap-2 text-lg text-gray-600">
-                  <div>• Orange</div>
-                  <div>• Los Angeles</div>
-                  <div>• San Diego</div>
-                  <div>• Riverside</div>
-                  <div>• San Bernadino</div>
-                </div>
-                <p className="text-lg text-gray-600 mt-4">
-                  Don't see your area listed?{" "}
-                  <a href="/contact" className="text-blue-600 hover:text-blue-800 font-medium">
-                    Contact us
-                  </a>{" "}
-                  - we may still be able to help!
-                </p>
+            <div className="bg-blue-50 rounded-2xl p-8 max-w-2xl mx-auto">
+              <h3 className="text-xl font-semibold text-blue-900 mb-4">Counties We Serve:</h3>
+              <div className="grid grid-cols-2 gap-4 text-lg text-gray-600 mb-6">
+                <div>• Orange County</div>
+                <div>• Los Angeles County</div>
+                <div>• San Diego County</div>
+                <div>• Riverside County</div>
+                <div>• San Bernardino County</div>
               </div>
+              <p className="text-lg text-gray-600">
+                Don't see your area listed?{" "}
+                <a href="/contact" className="text-blue-600 hover:text-blue-800 font-medium">
+                  Contact us
+                </a>{" "}
+                - we may still be able to help!
+              </p>
             </div>
           </div>
         </section>

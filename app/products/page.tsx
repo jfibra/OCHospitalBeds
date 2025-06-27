@@ -12,6 +12,82 @@ export const metadata: Metadata = {
 
 const products = [
   {
+    id: "hospital-bed-bundles",
+    category: "Complete Care Bundles",
+    items: [
+      {
+        id: "comfio-bundle",
+        name: "Comfio Home Care Bundle",
+        description:
+          "Complete home care solution with the Evenda Comfio bed designed to blend seamlessly into your home environment. Perfect for long-term care and recovery with everything you need.",
+        price: 450,
+        specifications: {
+          bedSize: '36" Wide x 80" Long',
+          maxWeight: "350 lbs",
+        },
+        images: [
+          { src: "/comfio-bundle-showcase.png", alt: "Comfio Home Care Bundle", caption: "Complete bundle package" },
+          { src: "/evenda-bed-angle.jpg", alt: "Evenda Comfio bed with mattress", caption: "Evenda Comfio bed setup" },
+          {
+            src: "/overbed-table-main.jpg",
+            alt: "Adjustable overbed table",
+            caption: "Height adjustable overbed table",
+          },
+          { src: "/foam-mattress-main.png", alt: "High-density foam mattress", caption: "Medical-grade foam mattress" },
+        ],
+        features: [
+          "Evenda Comfio Home Care Bed with wood finish",
+          "High-Density Foam Mattress included",
+          "Adjustable Overbed Table included",
+          "Simplified hand control for easy operation",
+          "Home-friendly design that blends with decor",
+          "Free delivery, setup, and 24/7 support",
+        ],
+      },
+      {
+        id: "professional-bundle",
+        name: "Professional Care Bundle",
+        description:
+          "Advanced hospital care solution with cutting-edge technology including iBed Awareness system and precision side rails. Complete package for maximum safety and comfort.",
+        price: 600,
+        specifications: {
+          bedSize: '36" Wide x 84" Long',
+          maxWeight: "450 lbs",
+        },
+        images: [
+          {
+            src: "/professional-bundle-showcase.png",
+            alt: "Professional Care Bundle",
+            caption: "Complete professional bundle",
+          },
+          {
+            src: "/stryker-hospital-bed.jpg",
+            alt: "Professional hospital bed with mattress",
+            caption: "Advanced hospital bed setup",
+          },
+          {
+            src: "/overbed-table-main.jpg",
+            alt: "Adjustable overbed table",
+            caption: "Height adjustable overbed table",
+          },
+          {
+            src: "/pressure-relief-mattress-main.png",
+            alt: "AtmosAir pressure relief mattress",
+            caption: "Advanced pressure relief system",
+          },
+        ],
+        features: [
+          "Professional Hospital Bed with iBed Awareness",
+          "AtmosAir Velaris Pressure Relief Mattress included",
+          "Adjustable Overbed Table included",
+          "Precision side rails with intermediate positions",
+          "Advanced patient monitoring system",
+          "Free delivery, setup, and 24/7 priority support",
+        ],
+      },
+    ],
+  },
+  {
     id: "hospital-beds",
     category: "Hospital Beds",
     items: [
@@ -20,7 +96,7 @@ const products = [
         name: "Evenda Comfio Home Care Bed",
         description:
           "Designed for home care with a warm wood finish that blends seamlessly into your home environment. Perfect for long-term care and recovery.",
-        price: 285,
+        price: "Included in Bundle",
         specifications: {
           bedSize: '36" Wide x 80" Long',
           maxWeight: "350 lbs",
@@ -42,7 +118,7 @@ const products = [
         name: "Professional Hospital Bed",
         description:
           "Premium hospital bed with cutting-edge technology including iBed Awareness system and precision side rails for maximum safety and comfort.",
-        price: 395,
+        price: "Included in Bundle",
         specifications: {
           bedSize: '36" Wide x 84" Long',
           maxWeight: "450 lbs",
@@ -80,7 +156,7 @@ const products = [
         name: "AtmosAir Velaris Pressure Relief Mattress",
         description:
           "Advanced alternating pressure mattress system that provides instant setup for pressure therapy without moving the patient.",
-        price: 165,
+        price: 350,
         specifications: {
           dimensions: '36" x 80" x 8"',
           weight: "25 lbs",
@@ -116,7 +192,7 @@ const products = [
         name: "High-Density Foam Mattress",
         description:
           "Premium foam mattress designed specifically for hospital beds with pressure-relieving properties.",
-        price: 85,
+        price: "Included in Bundle",
         specifications: {
           dimensions: '36" x 80" x 6"',
           weight: "18 lbs",
@@ -153,7 +229,7 @@ const products = [
         name: "Adjustable Overbed Table",
         description:
           "Height and tilt adjustable table that rolls smoothly over the bed for eating, reading, and activities.",
-        price: 65,
+        price: "Included in Bundle",
         specifications: {
           dimensions: '30" x 15" surface',
           weight: "22 lbs",
@@ -220,10 +296,18 @@ export default function ProductsPage() {
                           <h3 className="text-2xl font-bold text-blue-900">{item.name}</h3>
                           <div className="text-right">
                             <div className="text-2xl font-bold text-green-600">
-                              ${item.price}
-                              <span className="text-sm text-gray-500 font-normal">/month</span>
+                              {typeof item.price === "number" ? (
+                                <>
+                                  ${item.price}
+                                  <span className="text-sm text-gray-500 font-normal">/month</span>
+                                </>
+                              ) : (
+                                <span className="text-lg text-blue-600 font-semibold">{item.price}</span>
+                              )}
                             </div>
-                            <div className="text-xs text-gray-500">Rental Price</div>
+                            <div className="text-xs text-gray-500">
+                              {typeof item.price === "number" ? "Rental Price" : ""}
+                            </div>
                           </div>
                         </div>
 

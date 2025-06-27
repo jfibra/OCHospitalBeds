@@ -7,12 +7,12 @@ import { Check, Star } from "lucide-react"
 export default function FeaturedBundles() {
   const bundles = [
     {
-      id: "basic",
-      name: "Basic Bundle",
-      price: 350,
+      id: "comfio",
+      name: "Comfio Home Care Bundle",
+      price: 450,
       popular: false,
-      image: "/basic-bundle-showcase.png",
-      description: "Perfect for basic home care needs",
+      image: "/comfio-bundle-showcase.png",
+      description: "Perfect for comfortable home care",
       includes: [
         "Evenda Comfio Home Care Bed",
         "High-Density Foam Mattress",
@@ -22,17 +22,16 @@ export default function FeaturedBundles() {
       ],
     },
     {
-      id: "advanced",
-      name: "Advanced Bundle",
-      price: 550,
+      id: "professional",
+      name: "Professional Care Bundle",
+      price: 600,
       popular: true,
-      image: "/advanced-bundle-showcase.png",
-      description: "Complete care solution with premium features",
+      image: "/professional-bundle-showcase.png",
+      description: "Advanced care with premium features",
       includes: [
         "Professional Hospital Bed with iBed Awareness",
         "AtmosAir Velaris Pressure Relief Mattress",
         "Adjustable Overbed Table",
-        "Hospital Bed Trapeze Bar",
         "Free Delivery & Setup",
         "24/7 Priority Support",
         "Monthly Equipment Check",
@@ -43,8 +42,8 @@ export default function FeaturedBundles() {
   return (
     <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 sticky top-8">
       <div className="text-center mb-6">
-        <h3 className="text-2xl font-bold text-blue-900 mb-2">Featured Bundles</h3>
-        <p className="text-gray-600">Complete care packages at great value</p>
+        <h3 className="text-2xl font-bold text-blue-900 mb-2">Complete Care Bundles</h3>
+        <p className="text-gray-600">Everything you need in one package</p>
       </div>
 
       <div className="space-y-6">
@@ -67,7 +66,7 @@ export default function FeaturedBundles() {
             <div className="relative mb-4">
               <Image
                 src={bundle.image || "/placeholder.svg"}
-                alt={`${bundle.name} - Hospital bed rental package showing all included equipment`}
+                alt={`${bundle.name} - Complete hospital bed rental package`}
                 width={300}
                 height={200}
                 className="w-full h-40 object-contain rounded-lg bg-gray-50"
