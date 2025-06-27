@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import ImageZoom from "./ImageZoom"
 
 interface ProductImage {
@@ -38,7 +39,7 @@ export default function ProductImageGallery({ images, productName }: ProductImag
 
   return (
     <div className="space-y-4">
-      {/* Main Image */}
+      {/* Main Image - Only this one opens in lightbox */}
       <div className="relative">
         <ImageZoom
           src={images[selectedImage].src || "/placeholder.svg"}
@@ -58,7 +59,7 @@ export default function ProductImageGallery({ images, productName }: ProductImag
         </div>
       </div>
 
-      {/* Thumbnail Gallery */}
+      {/* Thumbnail Gallery - These are just for navigation */}
       {images.length > 1 && (
         <div className="px-6 pb-4">
           <div className="grid grid-cols-4 gap-2">
@@ -66,13 +67,15 @@ export default function ProductImageGallery({ images, productName }: ProductImag
               <button
                 key={index}
                 onClick={() => setSelectedImage(index)}
-                className={`relative rounded-lg overflow-hidden border-2 transition-all duration-200 ${
+                className={`relative rounded-lg overflow-hidden border-2 transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                   selectedImage === index
                     ? "border-blue-500 ring-2 ring-blue-200 scale-105"
-                    : "border-gray-200 hover:border-blue-300 hover:scale-102"
+                    : "border-gray-200 hover:border-blue-300"
                 }`}
+                aria-label={`View ${image.alt}`}
               >
-                <ImageZoom
+                {/* Regular Image component for thumbnails - no lightbox */}
+                <Image
                   src={image.src || "/placeholder.svg"}
                   alt={image.alt}
                   width={100}
@@ -85,8 +88,15 @@ export default function ProductImageGallery({ images, productName }: ProductImag
                     <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                   </div>
                 )}
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition-all duration-200"></div>
               </button>
             ))}
+          </div>
+
+          {/* Navigation hint */}
+          <div className="text-center mt-3">
+            <p className="text-sm text-gray-500">Click thumbnails to view different images</p>
           </div>
         </div>
       )}

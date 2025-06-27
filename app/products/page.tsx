@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import ProductContactOptions from "../components/ProductContactOptions"
 import ProductImageGallery from "../components/ProductImageGallery"
+import FeaturedBundles from "../components/FeaturedBundles"
 
 export const metadata: Metadata = {
   title: "Medical Equipment Rentals - Hospital Beds & More | OCHospitalBeds.com",
@@ -19,6 +20,11 @@ const products = [
         name: "Evenda Comfio Home Care Bed",
         description:
           "Designed for home care with a warm wood finish that blends seamlessly into your home environment. Perfect for long-term care and recovery.",
+        price: 285,
+        specifications: {
+          bedSize: '36" Wide x 80" Long',
+          maxWeight: "350 lbs",
+        },
         images: [
           { src: "/evenda-bed-angle.jpg", alt: "Evenda Comfio side view", caption: "Side view showing controls" },
           { src: "/evenda-remote.jpg", alt: "Evenda remote control", caption: "Easy-to-use remote control" },
@@ -36,6 +42,11 @@ const products = [
         name: "Professional Hospital Bed",
         description:
           "Premium hospital bed with cutting-edge technology including iBed Awareness system and precision side rails for maximum safety and comfort.",
+        price: 395,
+        specifications: {
+          bedSize: '36" Wide x 84" Long',
+          maxWeight: "450 lbs",
+        },
         images: [
           { src: "/stryker-hospital-bed.jpg", alt: "Stryker hospital bed", caption: "Advanced Stryker hospital bed" },
           {
@@ -69,6 +80,12 @@ const products = [
         name: "AtmosAir Velaris Pressure Relief Mattress",
         description:
           "Advanced alternating pressure mattress system that provides instant setup for pressure therapy without moving the patient.",
+        price: 165,
+        specifications: {
+          dimensions: '36" x 80" x 8"',
+          weight: "25 lbs",
+          weightCapacity: "350 lbs",
+        },
         images: [
           {
             src: "/pressure-relief-mattress-main.png",
@@ -99,6 +116,12 @@ const products = [
         name: "High-Density Foam Mattress",
         description:
           "Premium foam mattress designed specifically for hospital beds with pressure-relieving properties.",
+        price: 85,
+        specifications: {
+          dimensions: '36" x 80" x 6"',
+          weight: "18 lbs",
+          weightCapacity: "300 lbs",
+        },
         images: [
           {
             src: "/foam-mattress-main.png",
@@ -130,16 +153,17 @@ const products = [
         name: "Adjustable Overbed Table",
         description:
           "Height and tilt adjustable table that rolls smoothly over the bed for eating, reading, and activities.",
+        price: 65,
+        specifications: {
+          dimensions: '30" x 15" surface',
+          weight: "22 lbs",
+          weightCapacity: "50 lbs",
+        },
         images: [
           {
             src: "/overbed-table-main.jpg",
             alt: "Adjustable overbed table",
             caption: "Height and tilt adjustable design",
-          },
-          {
-            src: "/overbed-table-adjustment.jpg",
-            alt: "Overbed table adjustment mechanism",
-            caption: "Easy height and tilt controls",
           },
         ],
         features: [
@@ -167,73 +191,130 @@ export default function ProductsPage() {
           </p>
         </div>
 
-        {/* Product Categories */}
-        {products.map((category) => (
-          <section key={category.id} id={category.id} className="mb-20">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4 relative inline-block">
-                {category.category}
-                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-400 to-sky-400 rounded-full"></div>
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-              {category.items.map((item, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
-                >
-                  <ProductImageGallery
-                    images={item.images || [{ src: item.image || "/placeholder.svg", alt: item.name }]}
-                    productName={item.name}
-                  />
-
-                  <div className="p-6">
-                    <h3 className="text-2xl font-bold text-blue-900 mb-3">{item.name}</h3>
-                    <p className="text-lg text-gray-600 mb-6 leading-relaxed">{item.description}</p>
-
-                    <div className="mb-6">
-                      <h4 className="font-semibold text-blue-800 mb-3 text-lg">Key Features:</h4>
-                      <ul className="space-y-2">
-                        {item.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="text-gray-600 flex items-start">
-                            <span className="text-blue-500 mr-3 mt-1 flex-shrink-0">✓</span>
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <ProductContactOptions productName={item.name} productId={item.id} />
-                  </div>
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          {/* Main Content */}
+          <div className="lg:col-span-3">
+            {/* Product Categories */}
+            {products.map((category) => (
+              <section key={category.id} id={category.id} className="mb-20">
+                <div className="text-center mb-12">
+                  <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4 relative inline-block">
+                    {category.category}
+                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-400 to-sky-400 rounded-full"></div>
+                  </h2>
                 </div>
-              ))}
-            </div>
-          </section>
-        ))}
 
-        {/* Enhanced CTA Section */}
-        <section className="bg-gradient-to-r from-blue-600 to-sky-600 rounded-3xl p-8 md:p-12 text-center text-white shadow-2xl">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Need Help Choosing the Right Equipment?</h2>
-          <p className="text-xl mb-8 max-w-3xl mx-auto leading-relaxed opacity-90">
-            Our experienced team understands that every patient's needs are unique. We'll help you select the perfect
-            equipment and ensure proper setup in your home.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-white text-blue-600 hover:bg-gray-100 font-semibold py-4 px-8 rounded-xl text-lg transition-colors duration-200 shadow-lg"
-            >
-              Get Free Consultation
-            </Link>
-            <a
-              href="tel:+1-312-298-6651"
-              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 font-semibold py-4 px-8 rounded-xl text-lg transition-colors duration-200"
-            >
-              Call (949) 298-6651
-            </a>
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                  {category.items.map((item, index) => (
+                    <div
+                      key={index}
+                      className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                    >
+                      <ProductImageGallery
+                        images={item.images || [{ src: item.image || "/placeholder.svg", alt: item.name }]}
+                        productName={item.name}
+                      />
+
+                      <div className="p-6">
+                        <div className="flex justify-between items-start mb-3">
+                          <h3 className="text-2xl font-bold text-blue-900">{item.name}</h3>
+                          <div className="text-right">
+                            <div className="text-2xl font-bold text-green-600">
+                              ${item.price}
+                              <span className="text-sm text-gray-500 font-normal">/month</span>
+                            </div>
+                            <div className="text-xs text-gray-500">Rental Price</div>
+                          </div>
+                        </div>
+
+                        <p className="text-lg text-gray-600 mb-6 leading-relaxed">{item.description}</p>
+
+                        {/* Specifications */}
+                        <div className="mb-6 p-4 bg-blue-50 rounded-lg">
+                          <h4 className="font-semibold text-blue-800 mb-3 text-lg">Specifications:</h4>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                            {item.specifications.bedSize && (
+                              <div>
+                                <span className="font-medium text-gray-700">Bed Size:</span>
+                                <span className="ml-2 text-gray-600">{item.specifications.bedSize}</span>
+                              </div>
+                            )}
+                            {item.specifications.maxWeight && (
+                              <div>
+                                <span className="font-medium text-gray-700">Max Weight:</span>
+                                <span className="ml-2 text-gray-600">{item.specifications.maxWeight}</span>
+                              </div>
+                            )}
+                            {item.specifications.dimensions && (
+                              <div>
+                                <span className="font-medium text-gray-700">Dimensions:</span>
+                                <span className="ml-2 text-gray-600">{item.specifications.dimensions}</span>
+                              </div>
+                            )}
+                            {item.specifications.weight && (
+                              <div>
+                                <span className="font-medium text-gray-700">Weight:</span>
+                                <span className="ml-2 text-gray-600">{item.specifications.weight}</span>
+                              </div>
+                            )}
+                            {item.specifications.weightCapacity && (
+                              <div>
+                                <span className="font-medium text-gray-700">Weight Capacity:</span>
+                                <span className="ml-2 text-gray-600">{item.specifications.weightCapacity}</span>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+
+                        <div className="mb-6">
+                          <h4 className="font-semibold text-blue-800 mb-3 text-lg">Key Features:</h4>
+                          <ul className="space-y-2">
+                            {item.features.map((feature, featureIndex) => (
+                              <li key={featureIndex} className="text-gray-600 flex items-start">
+                                <span className="text-blue-500 mr-3 mt-1 flex-shrink-0">✓</span>
+                                <span>{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        <ProductContactOptions productName={item.name} productId={item.id} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            ))}
+
+            {/* Enhanced CTA Section */}
+            <section className="bg-gradient-to-r from-blue-600 to-sky-600 rounded-3xl p-8 md:p-12 text-center text-white shadow-2xl">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">Need Help Choosing the Right Equipment?</h2>
+              <p className="text-xl mb-8 max-w-3xl mx-auto leading-relaxed opacity-90">
+                Our experienced team understands that every patient's needs are unique. We'll help you select the
+                perfect equipment and ensure proper setup in your home.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  href="/contact"
+                  className="bg-white text-blue-600 hover:bg-gray-100 font-semibold py-4 px-8 rounded-xl text-lg transition-colors duration-200 shadow-lg"
+                >
+                  Get Free Consultation
+                </Link>
+                <a
+                  href="tel:+1-312-298-6651"
+                  className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 font-semibold py-4 px-8 rounded-xl text-lg transition-colors duration-200"
+                >
+                  Call (949) 298-6651
+                </a>
+              </div>
+            </section>
           </div>
-        </section>
+
+          {/* Sidebar with Featured Bundles */}
+          <div className="lg:col-span-1">
+            <FeaturedBundles />
+          </div>
+        </div>
       </div>
     </div>
   )
