@@ -282,6 +282,38 @@ function BundleIncludedButton({ bundleId }: { bundleId: string }) {
   )
 }
 
+function GridProductContactOptions({ productName, productId }: { productName: string; productId: string }) {
+  const encodedProductName = encodeURIComponent(productName)
+
+  return (
+    <div className="bg-gradient-to-r from-blue-50 to-sky-50 rounded-xl p-4 mt-6">
+      <h4 className="text-lg font-semibold text-blue-900 mb-3 text-center">Interested in {productName}?</h4>
+      <div className="space-y-2">
+        <Link
+          href={`/contact?type=call&product=${encodedProductName}&productId=${productId}`}
+          className="w-full flex items-center justify-center gap-2 bg-white hover:bg-blue-50 border-2 border-blue-200 hover:border-blue-300 rounded-lg p-3 transition-all duration-200 group"
+        >
+          <span className="font-medium text-blue-800 group-hover:text-blue-900">📞 Schedule Call</span>
+        </Link>
+
+        <Link
+          href={`/contact?type=video&product=${encodedProductName}&productId=${productId}`}
+          className="w-full flex items-center justify-center gap-2 bg-white hover:bg-blue-50 border-2 border-blue-200 hover:border-blue-300 rounded-lg p-3 transition-all duration-200 group"
+        >
+          <span className="font-medium text-blue-800 group-hover:text-blue-900">📹 Video Call</span>
+        </Link>
+
+        <Link
+          href={`/contact?type=email&product=${encodedProductName}&productId=${productId}`}
+          className="w-full flex items-center justify-center gap-2 bg-white hover:bg-blue-50 border-2 border-blue-200 hover:border-blue-300 rounded-lg p-3 transition-all duration-200 group"
+        >
+          <span className="font-medium text-blue-800 group-hover:text-blue-900">✉️ Email Us</span>
+        </Link>
+      </div>
+    </div>
+  )
+}
+
 function ProductCard({ item, category, viewMode }: { item: any; category: any; viewMode: "grid" | "list" }) {
   if (viewMode === "list") {
     return (
@@ -394,7 +426,7 @@ function ProductCard({ item, category, viewMode }: { item: any; category: any; v
     )
   }
 
-  // Grid view (existing layout)
+  // Grid view - Normal readable sizes
   return (
     <div
       id={item.id}
@@ -488,7 +520,7 @@ function ProductCard({ item, category, viewMode }: { item: any; category: any; v
           </ul>
         </div>
 
-        <ProductContactOptions productName={item.name} productId={item.id} />
+        <GridProductContactOptions productName={item.name} productId={item.id} />
       </div>
     </div>
   )
@@ -574,8 +606,8 @@ export default function ProductsClientPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-            {/* View Mode Toggle */}
-            <div>
+            {/* View Mode Toggle - Hidden on mobile */}
+            <div className="hidden md:block">
               <label className="block text-sm font-semibold text-gray-700 mb-3">View Mode</label>
               <div className="flex bg-gray-100 rounded-lg p-1">
                 <button
@@ -600,7 +632,7 @@ export default function ProductsClientPage() {
             </div>
 
             {/* Category Dropdown */}
-            <div>
+            <div className="md:col-span-1">
               <label className="block text-sm font-semibold text-gray-700 mb-3">Category</label>
               <select
                 value={selectedCategory}
@@ -616,7 +648,7 @@ export default function ProductsClientPage() {
             </div>
 
             {/* Search Input */}
-            <div className="lg:col-span-2">
+            <div className="md:col-span-2">
               <label className="block text-sm font-semibold text-gray-700 mb-3">Search Products</label>
               <div className="relative">
                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
