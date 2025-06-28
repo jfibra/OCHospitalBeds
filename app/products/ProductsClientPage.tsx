@@ -697,7 +697,7 @@ export default function ProductsClientPage() {
                 className={
                   viewMode === "list"
                     ? "space-y-8"
-                    : `grid gap-8 ${category.featured ? "grid-cols-1 lg:grid-cols-2" : "grid-cols-1 xl:grid-cols-2"}`
+                    : `grid gap-8 ${category.featured ? "grid-cols-1 lg:grid-cols-2" : "grid-cols-1 xl:grid-cols-3"}`
                 }
               >
                 {category.items.map((item, index) => (
