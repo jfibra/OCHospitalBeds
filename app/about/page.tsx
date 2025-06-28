@@ -1,60 +1,75 @@
 import type { Metadata } from "next"
 import Image from "next/image"
-import { Shield, Heart, Users, MapPin } from "lucide-react"
+import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "About Us - OCHospitalBeds.com | Medical Equipment Rentals",
+  title: "About OC Hospital Beds | Medical Equipment Rental Experts",
   description:
-    "Learn about OCHospitalBeds.com and our mission to provide quality medical equipment rentals to families, seniors, and caregivers.",
+    "Learn about OC Hospital Beds, Orange County's trusted medical equipment rental company. Professional service, quality equipment, and compassionate care since our founding.",
+  keywords: [
+    "about OC Hospital Beds",
+    "medical equipment rental company",
+    "Orange County healthcare",
+    "hospital bed rental experts",
+    "medical equipment professionals",
+    "home care specialists",
+  ],
+  openGraph: {
+    title: "About OC Hospital Beds | Medical Equipment Rental Experts",
+    description:
+      "Orange County's trusted medical equipment rental company providing quality hospital beds and home care solutions.",
+    type: "website",
+    url: "https://ochospitalbeds.com/about",
+    images: [
+      {
+        url: "/about-mission.png",
+        width: 1200,
+        height: 630,
+        alt: "OC Hospital Beds team and mission",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About OC Hospital Beds | Medical Equipment Rental Experts",
+    description:
+      "Orange County's trusted medical equipment rental company providing quality hospital beds and home care solutions.",
+    images: ["/about-mission.png"],
+  },
 }
 
 export default function AboutPage() {
   return (
     <div className="py-12">
       <div className="container mx-auto px-4">
-        {/* Header */}
+        {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6">About OCHospitalBeds</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6">About OC Hospital Beds</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We're dedicated to helping families and caregivers provide the best possible care at home with quality
-            medical equipment rentals.
+            Your trusted partner in medical equipment rentals, providing quality hospital beds and home care solutions
+            throughout Orange County and Southern California.
           </p>
         </div>
 
         {/* Mission Section */}
-        <section className="mb-16">
+        <section className="mb-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-blue-900 mb-6">Our Mission</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">Our Mission</h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                At OCHospitalBeds, we believe that quality healthcare should be accessible in the comfort of your own
-                home. Since 2020, we've been serving the community by providing clean, reliable, and affordable medical
-                equipment rentals.
+                At OC Hospital Beds, we believe that quality medical care should be accessible and comfortable in the
+                familiar surroundings of home. Our mission is to provide top-tier medical equipment rentals that enable
+                patients to recover with dignity and comfort.
               </p>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Our team understands the challenges that come with caring for loved ones, especially seniors who prefer
-                to recover and age in place. That's why we've made it our mission to remove the barriers to accessing
-                quality medical equipment.
+              <p className="text-lg text-gray-600 leading-relaxed">
+                We understand that every patient's needs are unique, which is why we offer personalized consultations
+                and professional setup services to ensure the perfect fit for your specific situation.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="bg-blue-100 p-2 rounded-full">
-                    <Shield className="text-blue-600" size={24} />
-                  </div>
-                  <span className="text-lg font-medium text-blue-900">Quality Assured</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="bg-blue-100 p-2 rounded-full">
-                    <Heart className="text-blue-600" size={24} />
-                  </div>
-                  <span className="text-lg font-medium text-blue-900">Compassionate Care</span>
-                </div>
-              </div>
             </div>
             <div className="relative">
               <Image
-                src="/healthcare-team.jpg"
-                alt="Professional healthcare team at OCHospitalBeds"
+                src="/about-mission.png"
+                alt="OC Hospital Beds mission - providing quality medical equipment"
                 width={600}
                 height={400}
                 className="rounded-2xl shadow-lg"
@@ -63,165 +78,198 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Who We Help Section */}
-        <section className="mb-16 bg-blue-50 rounded-2xl p-8 md:p-12">
+        {/* Values Section */}
+        <section className="mb-20">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-blue-900 mb-4">Who We Help</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Our Core Values</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              We're proud to serve diverse members of the community with their medical equipment needs.
+              These principles guide everything we do and shape how we serve our community.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div className="text-center">
-              <div className="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
-                <Users className="text-blue-600" size={40} />
-              </div>
-              <h3 className="text-2xl font-semibold text-blue-900 mb-3">Seniors & Families</h3>
-              <p className="text-lg text-gray-600">
-                Supporting seniors who want to age in place and families caring for elderly loved ones at home.
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-2xl shadow-lg p-8 text-center border border-gray-100">
+              <div className="text-4xl mb-4">🏥</div>
+              <h3 className="text-2xl font-bold text-blue-900 mb-4">Quality First</h3>
+              <p className="text-gray-600 leading-relaxed">
+                We maintain the highest standards for all our medical equipment, ensuring safety, reliability, and
+                comfort for every patient.
               </p>
             </div>
 
-            <div className="text-center">
-              <div className="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
-                <Heart className="text-blue-600" size={40} />
-              </div>
-              <h3 className="text-2xl font-semibold text-blue-900 mb-3">Caregivers</h3>
-              <p className="text-lg text-gray-600">
-                Helping professional and family caregivers provide the best possible care with proper equipment.
+            <div className="bg-white rounded-2xl shadow-lg p-8 text-center border border-gray-100">
+              <div className="text-4xl mb-4">❤️</div>
+              <h3 className="text-2xl font-bold text-blue-900 mb-4">Compassionate Care</h3>
+              <p className="text-gray-600 leading-relaxed">
+                We treat every patient and family with empathy, understanding the challenges they face during recovery
+                and healing.
               </p>
             </div>
 
-            <div className="text-center">
-              <div className="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
-                <Shield className="text-blue-600" size={40} />
-              </div>
-              <h3 className="text-2xl font-semibold text-blue-900 mb-3">Recovery Patients</h3>
-              <p className="text-lg text-gray-600">
-                Supporting patients recovering from surgery or illness who need temporary medical equipment.
+            <div className="bg-white rounded-2xl shadow-lg p-8 text-center border border-gray-100">
+              <div className="text-4xl mb-4">⚡</div>
+              <h3 className="text-2xl font-bold text-blue-900 mb-4">Responsive Service</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Our team is available 24/7 to address any concerns, provide support, and ensure your equipment is
+                working perfectly.
               </p>
             </div>
           </div>
+        </section>
 
-          {/* Additional image showing senior care */}
-          <div className="text-center">
-            <Image
-              src="/senior-care-home.jpg"
-              alt="Healthcare professional providing compassionate care to senior patient at home"
-              width={800}
-              height={400}
-              className="rounded-2xl shadow-lg mx-auto"
-            />
-            <p className="text-sm text-gray-500 mt-2 italic">Comfortable care at home with our medical equipment</p>
+        {/* Who We Help Section */}
+        <section className="mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="relative">
+              <Image
+                src="/healthcare-team.png"
+                alt="Healthcare professionals and patients we serve"
+                width={600}
+                height={400}
+                className="rounded-2xl shadow-lg"
+              />
+            </div>
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">Who We Help</h2>
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <span className="text-blue-500 mr-3 mt-1">✓</span>
+                  <div>
+                    <h3 className="font-semibold text-blue-900 mb-1">Patients Recovering at Home</h3>
+                    <p className="text-gray-600">Post-surgery recovery, chronic conditions, and long-term care needs</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-blue-500 mr-3 mt-1">✓</span>
+                  <div>
+                    <h3 className="font-semibold text-blue-900 mb-1">Senior Care Facilities</h3>
+                    <p className="text-gray-600">Assisted living, nursing homes, and adult day care centers</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-blue-500 mr-3 mt-1">✓</span>
+                  <div>
+                    <h3 className="font-semibold text-blue-900 mb-1">Healthcare Professionals</h3>
+                    <p className="text-gray-600">Doctors, nurses, and therapists providing home care services</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-blue-500 mr-3 mt-1">✓</span>
+                  <div>
+                    <h3 className="font-semibold text-blue-900 mb-1">Family Caregivers</h3>
+                    <p className="text-gray-600">Supporting loved ones with the right equipment and guidance</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* Service Area Section */}
-        <section className="mb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-1 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-blue-900 mb-6 text-center">
-                <MapPin className="inline-block mr-3 text-blue-600" size={36} />
-                Service Area
-              </h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed text-center max-w-3xl mx-auto">
-                We proudly serve Southern California and the surrounding metropolitan area. Our delivery team knows the
-                area well and can typically provide same-day or next-day delivery and setup.
+        <section className="mb-20">
+          <div className="bg-gradient-to-r from-blue-50 to-sky-50 rounded-3xl p-8 md:p-12">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Our Service Area</h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                We proudly serve patients and healthcare facilities throughout Southern California with professional
+                delivery and setup services.
               </p>
+            </div>
 
-              <div className="space-y-6 text-center">
-                <h3 className="text-xl font-semibold text-blue-900">Counties We Serve:</h3>
-                <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
-                  <div className="bg-white border-2 border-blue-200 rounded-lg px-6 py-3 shadow-sm hover:shadow-md transition-shadow">
-                    <span className="text-lg font-medium text-blue-900">Orange County</span>
-                  </div>
-                  <div className="bg-white border-2 border-blue-200 rounded-lg px-6 py-3 shadow-sm hover:shadow-md transition-shadow">
-                    <span className="text-lg font-medium text-blue-900">Los Angeles County</span>
-                  </div>
-                  <div className="bg-white border-2 border-blue-200 rounded-lg px-6 py-3 shadow-sm hover:shadow-md transition-shadow">
-                    <span className="text-lg font-medium text-blue-900">San Diego County</span>
-                  </div>
-                  <div className="bg-white border-2 border-blue-200 rounded-lg px-6 py-3 shadow-sm hover:shadow-md transition-shadow">
-                    <span className="text-lg font-medium text-blue-900">Riverside County</span>
-                  </div>
-                  <div className="bg-white border-2 border-blue-200 rounded-lg px-6 py-3 shadow-sm hover:shadow-md transition-shadow">
-                    <span className="text-lg font-medium text-blue-900">San Bernardino County</span>
-                  </div>
+            <div className="text-center">
+              <h3 className="text-2xl font-bold text-blue-900 mb-6">Counties We Serve:</h3>
+              <div className="flex flex-wrap justify-center gap-4 mb-8">
+                <div className="bg-white rounded-lg px-6 py-3 shadow-md border-2 border-blue-200 hover:shadow-lg transition-shadow duration-200">
+                  <span className="font-semibold text-blue-900">Orange County</span>
                 </div>
-                <p className="text-lg text-gray-600 mt-6">
-                  Don't see your area listed?{" "}
-                  <a href="/contact" className="text-blue-600 hover:text-blue-800 font-medium">
-                    Contact us
-                  </a>{" "}
-                  - we may still be able to help!
-                </p>
+                <div className="bg-white rounded-lg px-6 py-3 shadow-md border-2 border-blue-200 hover:shadow-lg transition-shadow duration-200">
+                  <span className="font-semibold text-blue-900">Los Angeles County</span>
+                </div>
+                <div className="bg-white rounded-lg px-6 py-3 shadow-md border-2 border-blue-200 hover:shadow-lg transition-shadow duration-200">
+                  <span className="font-semibold text-blue-900">San Diego County</span>
+                </div>
+                <div className="bg-white rounded-lg px-6 py-3 shadow-md border-2 border-blue-200 hover:shadow-lg transition-shadow duration-200">
+                  <span className="font-semibold text-blue-900">Riverside County</span>
+                </div>
+                <div className="bg-white rounded-lg px-6 py-3 shadow-md border-2 border-blue-200 hover:shadow-lg transition-shadow duration-200">
+                  <span className="font-semibold text-blue-900">San Bernardino County</span>
+                </div>
               </div>
+              <p className="text-gray-600">
+                Need service in another area?{" "}
+                <Link href="/contact" className="text-blue-600 hover:text-blue-800 underline">
+                  Contact us
+                </Link>{" "}
+                to discuss your needs.
+              </p>
             </div>
           </div>
         </section>
 
-        {/* Values Section */}
-        <section className="bg-white rounded-2xl border-2 border-blue-100 p-8 md:p-12">
+        {/* Why Choose Us Section */}
+        <section className="mb-20">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-blue-900 mb-4">Our Values</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Why Choose OC Hospital Beds?</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              These core values guide everything we do at OCHospitalBeds.
+              Experience the difference that professional service and quality equipment can make.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="flex gap-4">
-              <div className="bg-blue-100 p-3 rounded-full flex-shrink-0">
-                <Shield className="text-blue-600" size={24} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">🚚</span>
               </div>
-              <div>
-                <h3 className="text-xl font-semibold text-blue-900 mb-2">Safety First</h3>
-                <p className="text-gray-600">
-                  Every piece of equipment is thoroughly cleaned, sanitized, and inspected before delivery to ensure
-                  your safety and peace of mind.
-                </p>
-              </div>
+              <h3 className="text-xl font-bold text-blue-900 mb-2">Free Delivery & Setup</h3>
+              <p className="text-gray-600">Professional installation and training included with every rental</p>
             </div>
 
-            <div className="flex gap-4">
-              <div className="bg-blue-100 p-3 rounded-full flex-shrink-0">
-                <Heart className="text-blue-600" size={24} />
+            <div className="text-center">
+              <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">🔧</span>
               </div>
-              <div>
-                <h3 className="text-xl font-semibold text-blue-900 mb-2">Compassionate Service</h3>
-                <p className="text-gray-600">
-                  We understand that medical equipment needs often come during difficult times. Our team approaches
-                  every interaction with empathy and care.
-                </p>
-              </div>
+              <h3 className="text-xl font-bold text-blue-900 mb-2">24/7 Support</h3>
+              <p className="text-gray-600">Round-the-clock technical support and emergency assistance</p>
             </div>
 
-            <div className="flex gap-4">
-              <div className="bg-blue-100 p-3 rounded-full flex-shrink-0">
-                <Users className="text-blue-600" size={24} />
+            <div className="text-center">
+              <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">🏆</span>
               </div>
-              <div>
-                <h3 className="text-xl font-semibold text-blue-900 mb-2">Community Focus</h3>
-                <p className="text-gray-600">
-                  As a local business, we're committed to serving our community and building lasting relationships with
-                  our customers.
-                </p>
-              </div>
+              <h3 className="text-xl font-bold text-blue-900 mb-2">Quality Equipment</h3>
+              <p className="text-gray-600">Top-brand medical equipment maintained to the highest standards</p>
             </div>
 
-            <div className="flex gap-4">
-              <div className="bg-blue-100 p-3 rounded-full flex-shrink-0">
-                <MapPin className="text-blue-600" size={24} />
+            <div className="text-center">
+              <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">💰</span>
               </div>
-              <div>
-                <h3 className="text-xl font-semibold text-blue-900 mb-2">Reliable Delivery</h3>
-                <p className="text-gray-600">
-                  When you need medical equipment, timing matters. We pride ourselves on prompt, reliable delivery and
-                  setup service.
-                </p>
-              </div>
+              <h3 className="text-xl font-bold text-blue-900 mb-2">Competitive Pricing</h3>
+              <p className="text-gray-600">Fair, transparent pricing with flexible rental terms</p>
             </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="bg-gradient-to-r from-blue-600 to-sky-600 rounded-3xl p-8 md:p-12 text-center text-white">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Get Started?</h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto leading-relaxed opacity-90">
+            Contact our team today for a free consultation. We'll help you find the perfect medical equipment solution
+            for your needs.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="bg-white text-blue-600 hover:bg-gray-100 font-semibold py-4 px-8 rounded-xl text-lg transition-colors duration-200 shadow-lg"
+            >
+              Get Free Consultation
+            </Link>
+            <a
+              href="tel:+1-949-298-6651"
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 font-semibold py-4 px-8 rounded-xl text-lg transition-colors duration-200"
+            >
+              Call (949) 298-6651
+            </a>
           </div>
         </section>
       </div>

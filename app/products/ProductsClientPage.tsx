@@ -97,7 +97,7 @@ const products = [
         name: "Evenda Comfio Home Care Bed",
         description:
           "Designed for home care with a warm wood finish that blends seamlessly into your home environment. Perfect for long-term care and recovery.",
-        price: "Included in Bundle",
+        price: 275,
         bundleId: "comfio-bundle",
         keywords: ["evenda", "comfio", "home care", "bed", "wood finish", "quiet", "operation"],
         specifications: {
@@ -121,7 +121,7 @@ const products = [
         name: "Professional Hospital Bed",
         description:
           "Premium hospital bed with cutting-edge technology including iBed Awareness system and precision side rails for maximum safety and comfort.",
-        price: "Included in Bundle",
+        price: 425,
         bundleId: "professional-bundle",
         keywords: ["stryker", "professional", "hospital", "bed", "ibed", "awareness", "precision", "rails"],
         specifications: {
@@ -161,7 +161,8 @@ const products = [
         name: "AtmosAir Velaris Pressure Relief Mattress",
         description:
           "Advanced alternating pressure mattress system that provides instant setup for pressure therapy without moving the patient.",
-        price: 350,
+        price: 225,
+        bundleId: "professional-bundle",
         keywords: ["atmosair", "velaris", "pressure", "relief", "mattress", "alternating", "therapy"],
         specifications: {
           dimensions: '36" x 80" x 8"',
@@ -198,7 +199,7 @@ const products = [
         name: "High-Density Foam Mattress",
         description:
           "Premium foam mattress designed specifically for hospital beds with pressure-relieving properties.",
-        price: "Included in Bundle",
+        price: 85,
         bundleId: "comfio-bundle",
         keywords: ["foam", "mattress", "high-density", "medical", "grade", "pressure", "relief"],
         specifications: {
@@ -237,7 +238,7 @@ const products = [
         name: "Adjustable Overbed Table",
         description:
           "Height and tilt adjustable table that rolls smoothly over the bed for eating, reading, and activities.",
-        price: "Included in Bundle",
+        price: 65,
         bundleId: "comfio-bundle",
         keywords: ["overbed", "table", "adjustable", "height", "tilt", "rolling", "casters"],
         specifications: {
@@ -360,6 +361,11 @@ function ProductCard({ item, category, viewMode }: { item: any; category: any; v
                   )}
                 </div>
                 <div className="text-xs text-gray-500">{typeof item.price === "number" ? "Rental Price" : ""}</div>
+                {item.bundleId && typeof item.price === "number" && (
+                  <div className="mt-2">
+                    <BundleIncludedButton bundleId={item.bundleId} />
+                  </div>
+                )}
               </div>
             </div>
 
@@ -466,6 +472,11 @@ function ProductCard({ item, category, viewMode }: { item: any; category: any; v
               )}
             </div>
             <div className="text-xs text-gray-500">{typeof item.price === "number" ? "Rental Price" : ""}</div>
+            {item.bundleId && typeof item.price === "number" && (
+              <div className="mt-2">
+                <BundleIncludedButton bundleId={item.bundleId} />
+              </div>
+            )}
           </div>
         </div>
 
