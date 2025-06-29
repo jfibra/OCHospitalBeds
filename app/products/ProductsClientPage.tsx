@@ -105,6 +105,7 @@ const products = [
           maxWeight: "350 lbs",
         },
         images: [
+          { src: "/evenda-bed-main.jpg", alt: "Evenda Comfio bed frame", caption: "Wood-finished home care bed frame" },
           { src: "/evenda-bed-angle.jpg", alt: "Evenda Comfio side view", caption: "Side view showing controls" },
           { src: "/evenda-remote.jpg", alt: "Evenda remote control", caption: "Easy-to-use remote control" },
         ],
@@ -129,6 +130,11 @@ const products = [
           maxWeight: "450 lbs",
         },
         images: [
+          {
+            src: "/professional-hospital-bed-main.png",
+            alt: "Professional hospital bed frame",
+            caption: "Advanced medical bed frame",
+          },
           { src: "/stryker-hospital-bed.jpg", alt: "Stryker hospital bed", caption: "Advanced Stryker hospital bed" },
           {
             src: "/ibed-awareness-panel.jpg",
@@ -347,23 +353,26 @@ function ProductCard({ item, category, viewMode }: { item: any; category: any; v
             <div className="flex justify-between items-start mb-3">
               <h3 className="text-2xl font-bold text-blue-900">{item.name}</h3>
               <div className="text-right">
-                <div className="text-2xl font-bold text-green-600">
-                  {typeof item.price === "number" ? (
-                    <>
+                {item.bundleId ? (
+                  // Show "Included in Bundle" for items that are part of bundles
+                  <div className="flex flex-col items-end gap-2">
+                    <span className="text-lg text-blue-600 font-semibold">Included in Bundle</span>
+                    <BundleIncludedButton bundleId={item.bundleId} />
+                    <div className="text-xs text-gray-500">Individual: ${item.price}/month</div>
+                  </div>
+                ) : typeof item.price === "number" ? (
+                  // Show regular pricing for standalone items
+                  <>
+                    <div className="text-2xl font-bold text-green-600">
                       ${item.price}
                       <span className="text-sm text-gray-500 font-normal">/month</span>
-                    </>
-                  ) : (
-                    <div className="flex flex-col items-end gap-2">
-                      <span className="text-lg text-blue-600 font-semibold">{item.price}</span>
-                      {item.bundleId && <BundleIncludedButton bundleId={item.bundleId} />}
                     </div>
-                  )}
-                </div>
-                <div className="text-xs text-gray-500">{typeof item.price === "number" ? "Rental Price" : ""}</div>
-                {item.bundleId && typeof item.price === "number" && (
-                  <div className="mt-2">
-                    <BundleIncludedButton bundleId={item.bundleId} />
+                    <div className="text-xs text-gray-500">Rental Price</div>
+                  </>
+                ) : (
+                  // Fallback for bundle items
+                  <div className="flex flex-col items-end gap-2">
+                    <span className="text-lg text-blue-600 font-semibold">{item.price}</span>
                   </div>
                 )}
               </div>
@@ -458,23 +467,26 @@ function ProductCard({ item, category, viewMode }: { item: any; category: any; v
         <div className="flex justify-between items-start mb-3">
           <h3 className="text-2xl font-bold text-blue-900">{item.name}</h3>
           <div className="text-right">
-            <div className="text-2xl font-bold text-green-600">
-              {typeof item.price === "number" ? (
-                <>
+            {item.bundleId ? (
+              // Show "Included in Bundle" for items that are part of bundles
+              <div className="flex flex-col items-end gap-2">
+                <span className="text-lg text-blue-600 font-semibold">Included in Bundle</span>
+                <BundleIncludedButton bundleId={item.bundleId} />
+                <div className="text-xs text-gray-500">Individual: ${item.price}/month</div>
+              </div>
+            ) : typeof item.price === "number" ? (
+              // Show regular pricing for standalone items
+              <>
+                <div className="text-2xl font-bold text-green-600">
                   ${item.price}
                   <span className="text-sm text-gray-500 font-normal">/month</span>
-                </>
-              ) : (
-                <div className="flex flex-col items-end gap-2">
-                  <span className="text-lg text-blue-600 font-semibold">{item.price}</span>
-                  {item.bundleId && <BundleIncludedButton bundleId={item.bundleId} />}
                 </div>
-              )}
-            </div>
-            <div className="text-xs text-gray-500">{typeof item.price === "number" ? "Rental Price" : ""}</div>
-            {item.bundleId && typeof item.price === "number" && (
-              <div className="mt-2">
-                <BundleIncludedButton bundleId={item.bundleId} />
+                <div className="text-xs text-gray-500">Rental Price</div>
+              </>
+            ) : (
+              // Fallback for bundle items
+              <div className="flex flex-col items-end gap-2">
+                <span className="text-lg text-blue-600 font-semibold">{item.price}</span>
               </div>
             )}
           </div>
