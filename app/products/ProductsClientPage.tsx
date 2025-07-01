@@ -206,6 +206,39 @@ const products = [
         ],
       },
       {
+        id: "foam-mattress",
+        name: "High-Density Foam Mattress",
+        description:
+          "Premium foam mattress designed specifically for hospital beds with pressure-relieving properties.",
+        price: 85,
+        bundleId: "comfio-bundle",
+        keywords: ["foam", "mattress", "high-density", "medical", "grade", "pressure", "relief"],
+        specifications: {
+          dimensions: '36" x 80" x 6"',
+          weight: "18 lbs",
+          weightCapacity: "300 lbs",
+        },
+        images: [
+          {
+            src: "/foam-mattress-main.png",
+            alt: "High-density foam mattress",
+            caption: "Medical-grade foam construction",
+          },
+          {
+            src: "/foam-mattress-cover.png",
+            alt: "Waterproof mattress cover",
+            caption: "Easy-clean antimicrobial cover",
+          },
+        ],
+        features: [
+          "High-density medical-grade foam",
+          "Pressure point relief",
+          "Waterproof, antimicrobial cover",
+          "Multiple firmness options",
+          "Easy maintenance and cleaning",
+        ],
+      },
+      {
         id: "dual-layer-mattress",
         name: "Dual-Layer Pressure Relief Mattress",
         description:
@@ -220,9 +253,14 @@ const products = [
         },
         images: [
           {
+            src: "/foam-mattress-main.png",
+            alt: "High-density foam mattress",
+            caption: "Medical-grade foam construction",
+          },
+          {
             src: "/dual-layer-mattress-main.webp",
             alt: "Dual-layer pressure relief mattress",
-            caption: "Medical-grade dual-layer foam construction",
+            caption: "Anti-Microbial Cover Included",
           },
         ],
         features: [
