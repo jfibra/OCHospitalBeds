@@ -32,11 +32,15 @@ const products = [
             alt: "Adjustable overbed table",
             caption: "Height adjustable overbed table",
           },
-          { src: "/foam-mattress-main.png", alt: "High-density foam mattress", caption: "Medical-grade foam mattress" },
+          {
+            src: "/dual-layer-mattress-main.webp",
+            alt: "Dual-layer pressure relief mattress",
+            caption: "Medical-grade dual-layer mattress",
+          },
         ],
         features: [
           "Evenda Comfio Home Care Bed with wood finish",
-          "High-Density Foam Mattress included",
+          "Dual-Layer Pressure Relief Mattress included",
           "Adjustable Overbed Table included",
           "Simplified hand control for easy operation",
           "Home-friendly design that blends with decor",
@@ -72,18 +76,89 @@ const products = [
             caption: "Height adjustable overbed table",
           },
           {
-            src: "/pressure-relief-mattress-main.png",
-            alt: "AtmosAir pressure relief mattress",
-            caption: "Advanced pressure relief system",
+            src: "/dual-layer-mattress-main.webp",
+            alt: "Dual-layer pressure relief mattress",
+            caption: "Medical-grade dual-layer mattress",
           },
         ],
         features: [
           "Professional Hospital Bed with iBed Awareness",
-          "AtmosAir Velaris Pressure Relief Mattress included",
+          "Dual-Layer Pressure Relief Mattress included",
           "Adjustable Overbed Table included",
           "Precision side rails with intermediate positions",
           "Advanced patient monitoring system",
           "Free delivery, setup, and 24/7 priority support",
+        ],
+      },
+    ],
+  },
+  {
+    id: "hospital-beds",
+    category: "Hospital Beds",
+    hidden: true, // Hide this category
+    items: [
+      {
+        id: "evenda-comfio",
+        name: "Evenda Comfio Home Care Bed",
+        description:
+          "Designed for home care with a warm wood finish that blends seamlessly into your home environment. Perfect for long-term care and recovery.",
+        price: 275,
+        bundleId: "comfio-bundle",
+        keywords: ["evenda", "comfio", "home care", "bed", "wood finish", "quiet", "operation"],
+        specifications: {
+          bedSize: '36" Wide x 80" Long',
+          maxWeight: "350 lbs",
+        },
+        images: [
+          { src: "/evenda-bed-main.jpg", alt: "Evenda Comfio bed frame", caption: "Wood-finished home care bed frame" },
+          { src: "/evenda-bed-angle.jpg", alt: "Evenda Comfio side view", caption: "Side view showing controls" },
+          { src: "/evenda-remote.jpg", alt: "Evenda remote control", caption: "Easy-to-use remote control" },
+        ],
+        features: [
+          "Simplified hand control for easy operation",
+          "Compatible with AtmosAir Velaris mattress system",
+          "Under bed clearance for lifting aids",
+          "Home-friendly wood finish design",
+          "Quiet operation for peaceful rest",
+        ],
+      },
+      {
+        id: "stryker-hospital-bed",
+        name: "Professional Hospital Bed",
+        description:
+          "Premium hospital bed with cutting-edge technology including iBed Awareness system and precision side rails for maximum safety and comfort.",
+        price: 425,
+        bundleId: "professional-bundle",
+        keywords: ["stryker", "professional", "hospital", "bed", "ibed", "awareness", "precision", "rails"],
+        specifications: {
+          bedSize: '36" Wide x 84" Long',
+          maxWeight: "450 lbs",
+        },
+        images: [
+          {
+            src: "/professional-hospital-bed-main.png",
+            alt: "Professional hospital bed frame",
+            caption: "Medical-grade hospital bed frame",
+          },
+          { src: "/stryker-hospital-bed.jpg", alt: "Stryker hospital bed", caption: "Advanced Stryker hospital bed" },
+          {
+            src: "/ibed-awareness-panel.jpg",
+            alt: "iBed Awareness control panel",
+            caption: "iBed Awareness monitoring system",
+          },
+          {
+            src: "/precision-side-rails.jpg",
+            alt: "Precision side rails",
+            caption: "Precision side rails with intermediate positions",
+          },
+          { src: "/open-architecture-bed.jpg", alt: "Open architecture design", caption: "Open architecture platform" },
+        ],
+        features: [
+          "iBed Awareness monitoring system",
+          "Precision side rails with intermediate positions",
+          "Open architecture platform",
+          "Advanced patient monitoring",
+          "Professional clinical features",
         ],
       },
     ],
@@ -97,8 +172,8 @@ const products = [
         name: "AtmosAir Velaris Pressure Relief Mattress",
         description:
           "Advanced alternating pressure mattress system that provides instant setup for pressure therapy without moving the patient.",
-        price: 225,
-        bundleId: "professional-bundle",
+        price: 350,
+        bundleAddon: true, // This is an add-on to bundles, not included
         keywords: ["atmosair", "velaris", "pressure", "relief", "mattress", "alternating", "therapy"],
         specifications: {
           dimensions: '36" x 80" x 8"',
@@ -131,36 +206,31 @@ const products = [
         ],
       },
       {
-        id: "foam-mattress",
-        name: "High-Density Foam Mattress",
+        id: "dual-layer-mattress",
+        name: "Dual-Layer Pressure Relief Mattress",
         description:
-          "Premium foam mattress designed specifically for hospital beds with pressure-relieving properties.",
-        price: 85,
+          "The dual-layer foam construction of this mattress is specifically designed for patient comfort and pressure injury prevention. It helps reduce and redistribute weight on pressure ulcers, making it ideal when preventing further skin damage is a priority.",
+        price: 125,
         bundleId: "comfio-bundle",
-        keywords: ["foam", "mattress", "high-density", "medical", "grade", "pressure", "relief"],
+        keywords: ["dual-layer", "foam", "mattress", "pressure", "relief", "medical", "grade", "antimicrobial"],
         specifications: {
           dimensions: '36" x 80" x 6"',
-          weight: "18 lbs",
-          weightCapacity: "300 lbs",
+          weight: "20 lbs",
+          weightCapacity: "350 lbs",
         },
         images: [
           {
-            src: "/foam-mattress-main.png",
-            alt: "High-density foam mattress",
-            caption: "Medical-grade foam construction",
-          },
-          {
-            src: "/foam-mattress-cover.png",
-            alt: "Waterproof mattress cover",
-            caption: "Easy-clean antimicrobial cover",
+            src: "/dual-layer-mattress-main.webp",
+            alt: "Dual-layer pressure relief mattress",
+            caption: "Medical-grade dual-layer foam construction",
           },
         ],
         features: [
-          "High-density medical-grade foam",
-          "Pressure point relief",
-          "Waterproof, antimicrobial cover",
-          "Multiple firmness options",
-          "Easy maintenance and cleaning",
+          "Dual-layer foam provides effective pressure reduction",
+          "Convoluted top layer enhances comfort and airflow",
+          "Ultra-soft nylon cover offers a smooth sleep surface",
+          "Fluid-resistant cover protects against moisture and spills",
+          "Antimicrobial properties help reduce the risk of infections",
         ],
       },
     ],
@@ -215,6 +285,14 @@ function BundleIncludedButton({ bundleId }: { bundleId: string }) {
       className="inline-flex items-center px-4 py-2 bg-blue-100 hover:bg-blue-200 text-blue-800 font-semibold rounded-lg transition-colors duration-200 text-sm"
     >
       View Bundle →
+    </button>
+  )
+}
+
+function AddToBundleButton() {
+  return (
+    <button className="inline-flex items-center px-4 py-2 bg-green-100 hover:bg-green-200 text-green-800 font-semibold rounded-lg transition-colors duration-200 text-sm">
+      Add to Bundle +
     </button>
   )
 }
@@ -280,31 +358,46 @@ function ProductCard({ item, category, viewMode }: { item: any; category: any; v
 
           {/* Content Section */}
           <div className={`lg:w-2/3 p-6 ${item.isBundle ? "pt-12" : ""}`}>
-            <div className="flex justify-between items-start mb-3">
-              <h3 className="text-2xl font-bold text-blue-900">{item.name}</h3>
-              <div className="text-right">
-                {item.bundleId ? (
-                  // Show "Included in Bundle" for items that are part of bundles
-                  <div className="flex flex-col items-end gap-2">
-                    <span className="text-lg text-blue-600 font-semibold">Included in Bundle</span>
-                    <BundleIncludedButton bundleId={item.bundleId} />
-                    <div className="text-xs text-gray-500">Individual: ${item.price}/month</div>
-                  </div>
-                ) : typeof item.price === "number" ? (
-                  // Show regular pricing for standalone items
+            {/* Product Name - Full Width */}
+            <div className="mb-4">
+              <h3 className="text-2xl font-bold text-blue-900 mb-2">{item.name}</h3>
+
+              {/* Price and Status Tags - Full Width Below Name */}
+              <div className="flex flex-wrap gap-2">
+                {item.bundleAddon ? (
+                  // Bundle Add-on Tags
                   <>
-                    <div className="text-2xl font-bold text-green-600">
-                      ${item.price}
-                      <span className="text-sm text-gray-500 font-normal">/month</span>
-                    </div>
-                    <div className="text-xs text-gray-500">Rental Price</div>
+                    <span className="inline-flex items-center px-3 py-1 bg-orange-100 text-orange-800 text-sm font-semibold rounded-full">
+                      ${item.price} additional
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 text-sm font-semibold rounded-full">
+                      Add to Bundle +
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
+                      Bundle Add-on
+                    </span>
                   </>
-                ) : (
-                  // Fallback for bundle items
-                  <div className="flex flex-col items-end gap-2">
-                    <span className="text-lg text-blue-600 font-semibold">{item.price}</span>
-                  </div>
-                )}
+                ) : item.bundleId ? (
+                  // Included in Bundle Tags
+                  <>
+                    <span className="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full">
+                      Included in Bundle
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
+                      Individual: ${item.price}/month
+                    </span>
+                  </>
+                ) : typeof item.price === "number" ? (
+                  // Regular Pricing Tags
+                  <>
+                    <span className="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 text-sm font-semibold rounded-full">
+                      ${item.price}/month
+                    </span>
+                    <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
+                      Rental Price
+                    </span>
+                  </>
+                ) : null}
               </div>
             </div>
 
@@ -394,31 +487,46 @@ function ProductCard({ item, category, viewMode }: { item: any; category: any; v
       />
 
       <div className={`p-6 ${item.isBundle ? "pt-8" : ""}`}>
-        <div className="flex justify-between items-start mb-3">
-          <h3 className="text-2xl font-bold text-blue-900">{item.name}</h3>
-          <div className="text-right">
-            {item.bundleId ? (
-              // Show "Included in Bundle" for items that are part of bundles
-              <div className="flex flex-col items-end gap-2">
-                <span className="text-lg text-blue-600 font-semibold">Included in Bundle</span>
-                <BundleIncludedButton bundleId={item.bundleId} />
-                <div className="text-xs text-gray-500">Individual: ${item.price}/month</div>
-              </div>
-            ) : typeof item.price === "number" ? (
-              // Show regular pricing for standalone items
+        {/* Product Name - Full Width */}
+        <div className="mb-4">
+          <h3 className="text-2xl font-bold text-blue-900 mb-2">{item.name}</h3>
+
+          {/* Price and Status Tags - Full Width Below Name */}
+          <div className="flex flex-wrap gap-2">
+            {item.bundleAddon ? (
+              // Bundle Add-on Tags
               <>
-                <div className="text-2xl font-bold text-green-600">
-                  ${item.price}
-                  <span className="text-sm text-gray-500 font-normal">/month</span>
-                </div>
-                <div className="text-xs text-gray-500">Rental Price</div>
+                <span className="inline-flex items-center px-3 py-1 bg-orange-100 text-orange-800 text-sm font-semibold rounded-full">
+                  ${item.price} additional
+                </span>
+                <span className="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 text-sm font-semibold rounded-full">
+                  Add to Bundle +
+                </span>
+                <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
+                  Bundle Add-on
+                </span>
               </>
-            ) : (
-              // Fallback for bundle items
-              <div className="flex flex-col items-end gap-2">
-                <span className="text-lg text-blue-600 font-semibold">{item.price}</span>
-              </div>
-            )}
+            ) : item.bundleId ? (
+              // Included in Bundle Tags
+              <>
+                <span className="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full">
+                  Included in Bundle
+                </span>
+                <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
+                  Individual: ${item.price}/month
+                </span>
+              </>
+            ) : typeof item.price === "number" ? (
+              // Regular Pricing Tags
+              <>
+                <span className="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 text-sm font-semibold rounded-full">
+                  ${item.price}/month
+                </span>
+                <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
+                  Rental Price
+                </span>
+              </>
+            ) : null}
           </div>
         </div>
 
@@ -484,18 +592,18 @@ export default function ProductsClientPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all")
   const [searchQuery, setSearchQuery] = useState<string>("")
 
-  // Get all categories for dropdown
+  // Get all categories for dropdown (excluding hidden ones)
   const categories = [
     { value: "all", label: "All Products" },
     { value: "hospital-bed-bundles", label: "Complete Care Bundles" },
-    { value: "hospital-beds", label: "Hospital Beds" },
+    // { value: "hospital-beds", label: "Hospital Beds" }, // Hidden
     { value: "mattresses", label: "Medical Mattresses" },
     { value: "accessories", label: "Bed Accessories" },
   ]
 
-  // Filter products based on search and category
+  // Filter products based on search and category (excluding hidden categories)
   const filteredProducts = useMemo(() => {
-    let filtered = products
+    let filtered = products.filter((category) => !category.hidden) // Filter out hidden categories
 
     // Filter by category
     if (selectedCategory !== "all") {

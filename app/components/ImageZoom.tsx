@@ -2,297 +2,267 @@
 
 import type React from "react"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
-import { X, ZoomIn, ZoomOut, RotateCcw, Move } from "lucide-react"
+import { X, ZoomIn, ZoomOut, RotateCcw, ChevronLeft, ChevronRight } from "lucide-react"
 import { createPortal } from "react-dom"
 
-interface ImageZoomProps {
+interface ProductImage {
   src: string
   alt: string
-  width: number
-  height: number
-  className?: string
+  caption?: string
 }
 
-export default function ImageZoom({ src, alt, width, height, className = "" }: ImageZoomProps) {
-  const [isOpen, setIsOpen] = useState(false)
+interface ImageZoomProps {
+  images: ProductImage[]
+  initialIndex: number
+  productName: string
+  onClose: () => void
+}
+
+export default function ImageZoom({ images, initialIndex, productName, onClose }: ImageZoomProps) {
+  const [currentIndex, setCurrentIndex] = useState(initialIndex)
   const [scale, setScale] = useState(1)
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [isDragging, setIsDragging] = useState(false)
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 })
   const [mounted, setMounted] = useState(false)
+  const imageRef = useRef<HTMLDivElement>(null)
+
+  const currentImage = images[currentIndex]
 
   useEffect(() => {
     setMounted(true)
-  }, [])
-
-  const openModal = useCallback(() => {
-    setIsOpen(true)
-    setScale(1)
-    setPosition({ x: 0, y: 0 })
-    // Prevent body scroll when modal is open
+    // Lock body scroll
     document.body.style.overflow = "hidden"
-  }, [])
 
-  const closeModal = useCallback(() => {
-    setIsOpen(false)
-    setScale(1)
-    setPosition({ x: 0, y: 0 })
-    setIsDragging(false)
-    // Restore body scroll
-    document.body.style.overflow = "unset"
-  }, [])
-
-  const zoomIn = useCallback(() => {
-    setScale((prev) => Math.min(prev + 0.5, 5))
-  }, [])
-
-  const zoomOut = useCallback(() => {
-    setScale((prev) => Math.max(prev - 0.5, 0.5))
-  }, [])
-
-  const resetZoom = useCallback(() => {
-    setScale(1)
-    setPosition({ x: 0, y: 0 })
-  }, [])
-
-  const handleMouseDown = useCallback(
-    (e: React.MouseEvent) => {
-      if (scale > 1) {
-        setIsDragging(true)
-        setDragStart({
-          x: e.clientX - position.x,
-          y: e.clientY - position.y,
-        })
-        e.preventDefault()
-      }
-    },
-    [scale, position],
-  )
-
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent) => {
-      if (isDragging && scale > 1) {
-        setPosition({
-          x: e.clientX - dragStart.x,
-          y: e.clientY - dragStart.y,
-        })
-      }
-    },
-    [isDragging, scale, dragStart],
-  )
-
-  const handleMouseUp = useCallback(() => {
-    setIsDragging(false)
-  }, [])
-
-  const handleWheel = useCallback(
-    (e: React.WheelEvent) => {
-      e.preventDefault()
-      if (e.deltaY < 0) {
-        zoomIn()
-      } else {
-        zoomOut()
-      }
-    },
-    [zoomIn, zoomOut],
-  )
-
-  // Handle keyboard shortcuts
-  useEffect(() => {
-    if (!isOpen) return
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      switch (e.key) {
-        case "Escape":
-          closeModal()
-          break
-        case "+":
-        case "=":
-          e.preventDefault()
-          zoomIn()
-          break
-        case "-":
-          e.preventDefault()
-          zoomOut()
-          break
-        case "0":
-          e.preventDefault()
-          resetZoom()
-          break
-      }
-    }
-
-    document.addEventListener("keydown", handleKeyDown)
-    return () => document.removeEventListener("keydown", handleKeyDown)
-  }, [isOpen, closeModal, zoomIn, zoomOut, resetZoom])
-
-  // Cleanup on unmount
-  useEffect(() => {
     return () => {
       document.body.style.overflow = "unset"
     }
   }, [])
 
-  const lightboxContent = (
-    <div
-      className="fixed inset-0 z-[9999] bg-black bg-opacity-95 flex items-center justify-center"
-      style={{ backdropFilter: "blur(2px)" }}
-    >
-      {/* Controls Bar */}
-      <div className="absolute top-0 left-0 right-0 z-10 bg-black bg-opacity-50 p-4">
-        <div className="flex items-center justify-between max-w-7xl mx-auto">
-          {/* Left side - Image info */}
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      switch (e.key) {
+        case "Escape":
+          onClose()
+          break
+        case "ArrowLeft":
+          if (images.length > 1) {
+            setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)
+            resetZoom()
+          }
+          break
+        case "ArrowRight":
+          if (images.length > 1) {
+            setCurrentIndex((prev) => (prev + 1) % images.length)
+            resetZoom()
+          }
+          break
+        case "+":
+        case "=":
+          zoomIn()
+          break
+        case "-":
+          zoomOut()
+          break
+        case "0":
+          resetZoom()
+          break
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [images.length, onClose])
+
+  const zoomIn = () => {
+    setScale((prev) => Math.min(prev * 1.5, 5))
+  }
+
+  const zoomOut = () => {
+    setScale((prev) => Math.max(prev / 1.5, 0.5))
+  }
+
+  const resetZoom = () => {
+    setScale(1)
+    setPosition({ x: 0, y: 0 })
+  }
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (scale > 1) {
+      setIsDragging(true)
+      setDragStart({
+        x: e.clientX - position.x,
+        y: e.clientY - position.y,
+      })
+    }
+  }
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (isDragging && scale > 1) {
+      setPosition({
+        x: e.clientX - dragStart.x,
+        y: e.clientY - dragStart.y,
+      })
+    }
+  }
+
+  const handleMouseUp = () => {
+    setIsDragging(false)
+  }
+
+  const handleWheel = (e: React.WheelEvent) => {
+    e.preventDefault()
+    if (e.deltaY < 0) {
+      zoomIn()
+    } else {
+      zoomOut()
+    }
+  }
+
+  const nextImage = () => {
+    if (images.length > 1) {
+      setCurrentIndex((prev) => (prev + 1) % images.length)
+      resetZoom()
+    }
+  }
+
+  const prevImage = () => {
+    if (images.length > 1) {
+      setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)
+      resetZoom()
+    }
+  }
+
+  if (!mounted) return null
+
+  const modal = (
+    <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm">
+      {/* Header */}
+      <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/50 to-transparent">
+        <div className="flex items-center justify-between p-6">
           <div className="text-white">
-            <h3 className="text-lg font-semibold">{alt}</h3>
-            <p className="text-sm opacity-75">Click and drag to move • Scroll to zoom</p>
+            <h3 className="text-xl font-semibold">{currentImage.alt}</h3>
+            {currentImage.caption && <p className="text-gray-300 text-sm mt-1">{currentImage.caption}</p>}
           </div>
-
-          {/* Right side - Controls */}
-          <div className="flex items-center gap-3">
-            {/* Zoom Level */}
-            <div className="bg-white bg-opacity-20 rounded-lg px-3 py-1">
-              <span className="text-white text-sm font-medium">{Math.round(scale * 100)}%</span>
-            </div>
-
-            {/* Zoom Out */}
+          <div className="flex items-center gap-4">
+            <div className="text-white text-sm bg-black/30 px-3 py-1 rounded-full">{Math.round(scale * 100)}%</div>
             <button
-              onClick={zoomOut}
-              className="bg-white bg-opacity-20 hover:bg-opacity-30 rounded-lg p-2 transition-all duration-200"
-              aria-label="Zoom out"
-              title="Zoom out (-)"
-            >
-              <ZoomOut className="text-white" size={20} />
-            </button>
-
-            {/* Zoom In */}
-            <button
-              onClick={zoomIn}
-              className="bg-white bg-opacity-20 hover:bg-opacity-30 rounded-lg p-2 transition-all duration-200"
-              aria-label="Zoom in"
-              title="Zoom in (+)"
-            >
-              <ZoomIn className="text-white" size={20} />
-            </button>
-
-            {/* Reset */}
-            <button
-              onClick={resetZoom}
-              className="bg-white bg-opacity-20 hover:bg-opacity-30 rounded-lg p-2 transition-all duration-200"
-              aria-label="Reset zoom"
-              title="Reset zoom (0)"
-            >
-              <RotateCcw className="text-white" size={20} />
-            </button>
-
-            {/* Close */}
-            <button
-              onClick={closeModal}
-              className="bg-red-500 bg-opacity-80 hover:bg-opacity-100 rounded-lg p-2 transition-all duration-200"
+              onClick={onClose}
+              className="text-white hover:text-gray-300 p-2 hover:bg-white/10 rounded-full transition-colors"
               aria-label="Close"
-              title="Close (Esc)"
             >
-              <X className="text-white" size={20} />
+              <X className="h-6 w-6" />
             </button>
           </div>
         </div>
       </div>
+
+      {/* Controls */}
+      <div className="absolute top-20 right-6 z-10 flex flex-col gap-2">
+        <button
+          onClick={zoomIn}
+          className="bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors"
+          title="Zoom In (+)"
+        >
+          <ZoomIn className="h-5 w-5" />
+        </button>
+        <button
+          onClick={zoomOut}
+          className="bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors"
+          title="Zoom Out (-)"
+        >
+          <ZoomOut className="h-5 w-5" />
+        </button>
+        <button
+          onClick={resetZoom}
+          className="bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors"
+          title="Reset Zoom (0)"
+        >
+          <RotateCcw className="h-5 w-5" />
+        </button>
+      </div>
+
+      {/* Navigation */}
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={prevImage}
+            className="absolute left-6 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors"
+            title="Previous Image (←)"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+          <button
+            onClick={nextImage}
+            className="absolute right-6 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors"
+            title="Next Image (→)"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
+        </>
+      )}
 
       {/* Image Container */}
       <div
-        className="relative w-full h-full flex items-center justify-center overflow-hidden cursor-move"
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
-        onWheel={handleWheel}
-        style={{
-          cursor: scale > 1 ? (isDragging ? "grabbing" : "grab") : "default",
+        className="absolute inset-0 flex items-center justify-center overflow-hidden"
+        onClick={(e) => {
+          if (e.target === e.currentTarget) {
+            onClose()
+          }
         }}
       >
         <div
-          className="relative transition-transform duration-300 ease-out"
+          ref={imageRef}
+          className={`relative transition-transform duration-200 ease-out ${
+            scale > 1 ? (isDragging ? "cursor-grabbing" : "cursor-grab") : "cursor-zoom-in"
+          }`}
           style={{
-            transform: `scale(${scale}) translate(${position.x / scale}px, ${position.y / scale}px)`,
+            transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
           }}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+          onWheel={handleWheel}
+          onClick={scale === 1 ? zoomIn : undefined}
         >
           <Image
-            src={src || "/placeholder.svg"}
-            alt={alt}
-            width={Math.min(width * 2, 1200)}
-            height={Math.min(height * 2, 800)}
-            className="max-w-none select-none"
+            src={currentImage.src || "/placeholder.svg"}
+            alt={currentImage.alt}
+            width={800}
+            height={600}
+            className="max-w-[90vw] max-h-[90vh] object-contain"
+            crossOrigin="anonymous"
             priority
-            draggable={false}
-            style={{
-              maxWidth: "90vw",
-              maxHeight: "80vh",
-              objectFit: "contain",
-            }}
           />
         </div>
-
-        {/* Drag hint */}
-        {scale > 1 && !isDragging && (
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white px-3 py-1 rounded-lg text-sm flex items-center gap-2">
-            <Move size={16} />
-            Drag to move around
-          </div>
-        )}
       </div>
 
-      {/* Keyboard shortcuts help */}
-      <div className="absolute bottom-4 right-4 bg-black bg-opacity-50 text-white p-3 rounded-lg text-xs">
-        <div className="space-y-1">
-          <div>
-            <kbd className="bg-white bg-opacity-20 px-1 rounded">+/-</kbd> Zoom
-          </div>
-          <div>
-            <kbd className="bg-white bg-opacity-20 px-1 rounded">0</kbd> Reset
-          </div>
-          <div>
-            <kbd className="bg-white bg-opacity-20 px-1 rounded">Esc</kbd> Close
-          </div>
+      {/* Drag Hint */}
+      {scale > 1 && (
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 bg-black/50 text-white px-4 py-2 rounded-full text-sm">
+          {isDragging ? "Dragging..." : "Click and drag to pan"}
         </div>
+      )}
+
+      {/* Keyboard Shortcuts */}
+      <div className="absolute bottom-6 right-6 z-10 bg-black/50 text-white p-3 rounded-lg text-xs space-y-1">
+        <div>ESC: Close</div>
+        <div>+/-: Zoom</div>
+        <div>0: Reset</div>
+        {images.length > 1 && <div>←/→: Navigate</div>}
       </div>
 
-      {/* Click outside to close */}
-      <div
-        className="absolute inset-0 -z-10"
-        onClick={(e) => {
-          if (e.target === e.currentTarget) {
-            closeModal()
-          }
-        }}
-      />
+      {/* Image Counter */}
+      {images.length > 1 && (
+        <div className="absolute bottom-6 left-6 z-10 bg-black/50 text-white px-4 py-2 rounded-full text-sm">
+          {currentIndex + 1} of {images.length}
+        </div>
+      )}
     </div>
   )
 
-  return (
-    <>
-      {/* Clickable Image */}
-      <div className="relative group cursor-pointer" onClick={openModal}>
-        <Image
-          src={src || "/placeholder.svg"}
-          alt={alt}
-          width={width}
-          height={height}
-          className={`${className} transition-all duration-300 group-hover:brightness-110 group-hover:scale-105`}
-        />
-        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-          <div className="bg-white bg-opacity-90 rounded-full p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:scale-110">
-            <ZoomIn className="text-blue-600" size={24} />
-          </div>
-        </div>
-        {/* Click to view text */}
-        <div className="absolute bottom-2 left-2 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          Click to view full size
-        </div>
-      </div>
-
-      {/* Portal for full-screen lightbox */}
-      {mounted && isOpen && createPortal(lightboxContent, document.body)}
-    </>
-  )
+  return createPortal(modal, document.body)
 }

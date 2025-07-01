@@ -18,7 +18,7 @@ interface ProductImageGalleryProps {
 
 export default function ProductImageGallery({ images, productName }: ProductImageGalleryProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const [showZoom, setShowZoom] = useState(false)
+  const [isZoomOpen, setIsZoomOpen] = useState(false)
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % images.length)
@@ -28,28 +28,27 @@ export default function ProductImageGallery({ images, productName }: ProductImag
     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length)
   }
 
-  const currentImage = images[currentImageIndex]
+  const currentImage = images[currentImageIndex] || images[0]
 
   return (
     <div className="relative">
-      {/* Main Image Container - Square Aspect Ratio */}
-      <div className="relative aspect-square w-full bg-gray-100 rounded-t-2xl overflow-hidden group">
+      {/* Main Image - Square Aspect Ratio */}
+      <div className="relative aspect-square bg-gray-100 rounded-t-2xl overflow-hidden group">
         <Image
           src={currentImage.src || "/placeholder.svg"}
           alt={currentImage.alt}
           fill
           className="object-cover transition-transform duration-300 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          priority={currentImageIndex === 0}
         />
 
         {/* Zoom Button */}
         <button
-          onClick={() => setShowZoom(true)}
-          className="absolute top-4 right-4 bg-white/90 hover:bg-white text-gray-700 p-2 rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
+          onClick={() => setIsZoomOpen(true)}
+          className="absolute top-4 right-4 bg-white/90 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
           aria-label="Zoom image"
         >
-          <ZoomIn className="h-4 w-4" />
+          <ZoomIn className="h-5 w-5" />
         </button>
 
         {/* Navigation Arrows - Only show if multiple images */}
@@ -57,24 +56,24 @@ export default function ProductImageGallery({ images, productName }: ProductImag
           <>
             <button
               onClick={prevImage}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-700 p-2 rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
               aria-label="Previous image"
             >
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeft className="h-5 w-5" />
             </button>
             <button
               onClick={nextImage}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-700 p-2 rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
               aria-label="Next image"
             >
-              <ChevronRight className="h-4 w-4" />
+              <ChevronRight className="h-5 w-5" />
             </button>
           </>
         )}
 
         {/* Image Counter */}
         {images.length > 1 && (
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 text-white px-3 py-1 rounded-full text-sm">
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white px-3 py-1 rounded-full text-sm">
             {currentImageIndex + 1} / {images.length}
           </div>
         )}
@@ -99,17 +98,13 @@ export default function ProductImageGallery({ images, productName }: ProductImag
         </div>
       )}
 
-      {/* Image Caption */}
-      {currentImage.caption && (
-        <div className="px-4 py-2 bg-gray-50 text-sm text-gray-600 text-center border-t">{currentImage.caption}</div>
-      )}
-
-      {/* Zoom Modal */}
-      {showZoom && (
+      {/* Image Zoom Modal */}
+      {isZoomOpen && (
         <ImageZoom
-          src={currentImage.src || "/placeholder.svg"}
-          alt={currentImage.alt}
-          onClose={() => setShowZoom(false)}
+          images={images}
+          initialIndex={currentImageIndex}
+          productName={productName}
+          onClose={() => setIsZoomOpen(false)}
         />
       )}
     </div>
