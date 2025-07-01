@@ -2,103 +2,120 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import { ChevronLeft, ChevronRight, ZoomIn } from "lucide-react"
 import ImageZoom from "./ImageZoom"
 
-interface ProductImage {
+interface ImageData {
   src: string
   alt: string
   caption?: string
 }
 
 interface ProductImageGalleryProps {
-  images: ProductImage[]
+  images: ImageData[]
   productName: string
 }
 
 export default function ProductImageGallery({ images, productName }: ProductImageGalleryProps) {
-  const [selectedImage, setSelectedImage] = useState(0)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [showZoom, setShowZoom] = useState(false)
 
-  if (images.length === 1) {
-    return (
-      <div className="relative">
-        <ImageZoom
-          src={images[0].src || "/placeholder.svg"}
-          alt={images[0].alt}
-          width={400}
-          height={250}
-          className="w-full h-64 object-cover rounded-t-2xl"
-        />
-        {images[0].caption && (
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-            <p className="text-white text-sm font-medium">{images[0].caption}</p>
-          </div>
-        )}
-      </div>
-    )
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % images.length)
   }
 
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length)
+  }
+
+  const currentImage = images[currentImageIndex] || images[0]
+
   return (
-    <div className="space-y-4">
-      {/* Main Image - Only this one opens in lightbox */}
-      <div className="relative">
-        <ImageZoom
-          src={images[selectedImage].src || "/placeholder.svg"}
-          alt={images[selectedImage].alt}
-          width={400}
-          height={250}
-          className="w-full h-64 object-cover rounded-t-2xl"
+    <div className="relative">
+      {/* Main Image Display - Square Aspect Ratio */}
+      <div className="relative aspect-square w-full bg-gray-100 rounded-t-2xl overflow-hidden group">
+        <Image
+          src={currentImage.src || "/placeholder.svg"}
+          alt={currentImage.alt}
+          fill
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        {images[selectedImage].caption && (
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-            <p className="text-white text-sm font-medium">{images[selectedImage].caption}</p>
+
+        {/* Zoom Button */}
+        <button
+          onClick={() => setShowZoom(true)}
+          className="absolute top-4 right-4 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
+          aria-label="Zoom image"
+        >
+          <ZoomIn className="h-4 w-4" />
+        </button>
+
+        {/* Navigation Arrows - Only show if multiple images */}
+        {images.length > 1 && (
+          <>
+            <button
+              onClick={prevImage}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <button
+              onClick={nextImage}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
+              aria-label="Next image"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </>
+        )}
+
+        {/* Image Counter */}
+        {images.length > 1 && (
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 text-white px-3 py-1 rounded-full text-sm">
+            {currentImageIndex + 1} / {images.length}
           </div>
         )}
-        {/* Image counter */}
-        <div className="absolute top-4 right-4 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded">
-          {selectedImage + 1} / {images.length}
-        </div>
       </div>
 
-      {/* Thumbnail Gallery - These are just for navigation */}
+      {/* Thumbnail Navigation - Only show if multiple images */}
       {images.length > 1 && (
-        <div className="px-6 pb-4">
-          <div className="grid grid-cols-4 gap-2">
-            {images.map((image, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedImage(index)}
-                className={`relative rounded-lg overflow-hidden border-2 transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  selectedImage === index
-                    ? "border-blue-500 ring-2 ring-blue-200 scale-105"
-                    : "border-gray-200 hover:border-blue-300"
-                }`}
-                aria-label={`View ${image.alt}`}
-              >
-                {/* Regular Image component for thumbnails - no lightbox */}
-                <Image
-                  src={image.src || "/placeholder.svg"}
-                  alt={image.alt}
-                  width={100}
-                  height={60}
-                  className="w-full h-16 object-cover"
-                />
-                {/* Selected indicator */}
-                {selectedImage === index && (
-                  <div className="absolute inset-0 bg-blue-500 bg-opacity-20 flex items-center justify-center">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  </div>
-                )}
-                {/* Hover overlay */}
-                <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition-all duration-200"></div>
-              </button>
-            ))}
-          </div>
-
-          {/* Navigation hint */}
-          <div className="text-center mt-3">
-            <p className="text-sm text-gray-500">Click thumbnails to view different images</p>
-          </div>
+        <div className="flex gap-2 p-4 bg-gray-50 rounded-b-2xl overflow-x-auto">
+          {images.map((image, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentImageIndex(index)}
+              className={`flex-shrink-0 aspect-square w-16 h-16 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
+                index === currentImageIndex
+                  ? "border-blue-500 ring-2 ring-blue-200"
+                  : "border-gray-200 hover:border-gray-300"
+              }`}
+            >
+              <Image
+                src={image.src || "/placeholder.svg"}
+                alt={image.alt}
+                width={64}
+                height={64}
+                className="w-full h-full object-cover"
+              />
+            </button>
+          ))}
         </div>
+      )}
+
+      {/* Image Caption */}
+      {currentImage.caption && (
+        <div className="px-4 py-2 bg-gray-50 text-sm text-gray-600 text-center border-t">{currentImage.caption}</div>
+      )}
+
+      {/* Zoom Modal */}
+      {showZoom && (
+        <ImageZoom
+          src={currentImage.src || "/placeholder.svg"}
+          alt={currentImage.alt}
+          onClose={() => setShowZoom(false)}
+        />
       )}
     </div>
   )

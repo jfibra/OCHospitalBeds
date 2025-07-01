@@ -133,7 +133,7 @@ const products = [
           {
             src: "/professional-hospital-bed-main.png",
             alt: "Professional hospital bed frame",
-            caption: "Advanced medical bed frame",
+            caption: "Medical-grade hospital bed frame",
           },
           { src: "/stryker-hospital-bed.jpg", alt: "Stryker hospital bed", caption: "Advanced Stryker hospital bed" },
           {
