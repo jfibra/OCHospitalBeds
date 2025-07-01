@@ -32,15 +32,24 @@ export default function ProductImageGallery({ images, productName }: ProductImag
 
   return (
     <div className="relative">
-      {/* Main Image - Square Aspect Ratio */}
+      {/* Main Image Container - Square Aspect Ratio */}
       <div className="relative aspect-square bg-gray-100 rounded-t-2xl overflow-hidden group">
         <Image
           src={currentImage.src || "/placeholder.svg"}
           alt={currentImage.alt}
           fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          className={`transition-transform duration-300 group-hover:scale-105 ${
+            productName.includes("Bundle") ? "object-contain" : "object-cover"
+          }`}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
+
+        {/* Image Caption on Hover */}
+        {currentImage.caption && (
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p className="text-white text-sm font-medium">{currentImage.caption}</p>
+          </div>
+        )}
 
         {/* Zoom Button */}
         <button

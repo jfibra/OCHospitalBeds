@@ -25,17 +25,17 @@ const products = [
           maxWeight: "350 lbs",
         },
         images: [
-          { src: "/comfio-bundle-primary.png", alt: "Comfio Home Care Bundle", caption: "Complete bundle package" },
-          { src: "/evenda-bed-angle.jpg", alt: "Evenda Comfio bed with mattress", caption: "Evenda Comfio bed setup" },
-          {
-            src: "/new-overbed-table.jpg",
-            alt: "Adjustable overbed table",
-            caption: "Height adjustable overbed table",
-          },
+          { src: "/comfio-bundle-primary-new.png", alt: "Comfio Home Care Bundle", caption: "Complete bundle package" },
+          { src: "/evenda-bed-main.jpg", alt: "Evenda Comfio bed with mattress", caption: "Evenda Comfio bed setup" },
           {
             src: "/dual-layer-mattress-main.webp",
             alt: "Dual-layer pressure relief mattress",
             caption: "Medical-grade dual-layer mattress",
+          },
+          {
+            src: "/new-overbed-table.jpg",
+            alt: "Adjustable overbed table",
+            caption: "Height adjustable overbed table",
           },
         ],
         features: [
@@ -61,24 +61,24 @@ const products = [
         },
         images: [
           {
-            src: "/professional-bundle-primary.png",
+            src: "/professional-bundle-primary-new.png",
             alt: "Professional Care Bundle",
             caption: "Complete professional bundle",
           },
           {
-            src: "/stryker-hospital-bed.jpg",
+            src: "/professional-hospital-bed-main.png",
             alt: "Professional hospital bed with mattress",
             caption: "Advanced hospital bed setup",
-          },
-          {
-            src: "/new-overbed-table.jpg",
-            alt: "Adjustable overbed table",
-            caption: "Height adjustable overbed table",
           },
           {
             src: "/dual-layer-mattress-main.webp",
             alt: "Dual-layer pressure relief mattress",
             caption: "Medical-grade dual-layer mattress",
+          },
+          {
+            src: "/new-overbed-table.jpg",
+            alt: "Adjustable overbed table",
+            caption: "Height adjustable overbed table",
           },
         ],
         features: [
@@ -203,39 +203,6 @@ const products = [
           "Advanced pressure redistribution",
           "Quiet pump operation",
           "Easy-to-clean antimicrobial cover",
-        ],
-      },
-      {
-        id: "foam-mattress",
-        name: "High-Density Foam Mattress",
-        description:
-          "Premium foam mattress designed specifically for hospital beds with pressure-relieving properties.",
-        price: 85,
-        bundleId: "comfio-bundle",
-        keywords: ["foam", "mattress", "high-density", "medical", "grade", "pressure", "relief"],
-        specifications: {
-          dimensions: '36" x 80" x 6"',
-          weight: "18 lbs",
-          weightCapacity: "300 lbs",
-        },
-        images: [
-          {
-            src: "/foam-mattress-main.png",
-            alt: "High-density foam mattress",
-            caption: "Medical-grade foam construction",
-          },
-          {
-            src: "/foam-mattress-cover.png",
-            alt: "Waterproof mattress cover",
-            caption: "Easy-clean antimicrobial cover",
-          },
-        ],
-        features: [
-          "High-density medical-grade foam",
-          "Pressure point relief",
-          "Waterproof, antimicrobial cover",
-          "Multiple firmness options",
-          "Easy maintenance and cleaning",
         ],
       },
       {
@@ -406,7 +373,7 @@ function ProductCard({ item, category, viewMode }: { item: any; category: any; v
                   // Bundle Add-on Tags
                   <>
                     <span className="inline-flex items-center px-3 py-1 bg-orange-100 text-orange-800 text-sm font-semibold rounded-full">
-                      ${item.price} additional
+                      ${item.price} additional/month
                     </span>
                     <span className="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 text-sm font-semibold rounded-full">
                       Add to Bundle +
@@ -535,7 +502,7 @@ function ProductCard({ item, category, viewMode }: { item: any; category: any; v
               // Bundle Add-on Tags
               <>
                 <span className="inline-flex items-center px-3 py-1 bg-orange-100 text-orange-800 text-sm font-semibold rounded-full">
-                  ${item.price} additional
+                  ${item.price} additional/month
                 </span>
                 <span className="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 text-sm font-semibold rounded-full">
                   Add to Bundle +
