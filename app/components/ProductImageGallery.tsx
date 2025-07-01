@@ -5,14 +5,14 @@ import Image from "next/image"
 import { ChevronLeft, ChevronRight, ZoomIn } from "lucide-react"
 import ImageZoom from "./ImageZoom"
 
-interface ImageData {
+interface ProductImage {
   src: string
   alt: string
   caption?: string
 }
 
 interface ProductImageGalleryProps {
-  images: ImageData[]
+  images: ProductImage[]
   productName: string
 }
 
@@ -28,11 +28,11 @@ export default function ProductImageGallery({ images, productName }: ProductImag
     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length)
   }
 
-  const currentImage = images[currentImageIndex] || images[0]
+  const currentImage = images[currentImageIndex]
 
   return (
     <div className="relative">
-      {/* Main Image Display - Square Aspect Ratio */}
+      {/* Main Image Container - Square Aspect Ratio */}
       <div className="relative aspect-square w-full bg-gray-100 rounded-t-2xl overflow-hidden group">
         <Image
           src={currentImage.src || "/placeholder.svg"}
@@ -40,12 +40,13 @@ export default function ProductImageGallery({ images, productName }: ProductImag
           fill
           className="object-cover transition-transform duration-300 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority={currentImageIndex === 0}
         />
 
         {/* Zoom Button */}
         <button
           onClick={() => setShowZoom(true)}
-          className="absolute top-4 right-4 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
+          className="absolute top-4 right-4 bg-white/90 hover:bg-white text-gray-700 p-2 rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
           aria-label="Zoom image"
         >
           <ZoomIn className="h-4 w-4" />
@@ -56,14 +57,14 @@ export default function ProductImageGallery({ images, productName }: ProductImag
           <>
             <button
               onClick={prevImage}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-700 p-2 rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
               aria-label="Previous image"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
             <button
               onClick={nextImage}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-gray-700 p-2 rounded-full shadow-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
               aria-label="Next image"
             >
               <ChevronRight className="h-4 w-4" />
@@ -73,7 +74,7 @@ export default function ProductImageGallery({ images, productName }: ProductImag
 
         {/* Image Counter */}
         {images.length > 1 && (
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 text-white px-3 py-1 rounded-full text-sm">
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 text-white px-3 py-1 rounded-full text-sm">
             {currentImageIndex + 1} / {images.length}
           </div>
         )}
@@ -86,19 +87,13 @@ export default function ProductImageGallery({ images, productName }: ProductImag
             <button
               key={index}
               onClick={() => setCurrentImageIndex(index)}
-              className={`flex-shrink-0 aspect-square w-16 h-16 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
+              className={`relative flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
                 index === currentImageIndex
                   ? "border-blue-500 ring-2 ring-blue-200"
                   : "border-gray-200 hover:border-gray-300"
               }`}
             >
-              <Image
-                src={image.src || "/placeholder.svg"}
-                alt={image.alt}
-                width={64}
-                height={64}
-                className="w-full h-full object-cover"
-              />
+              <Image src={image.src || "/placeholder.svg"} alt={image.alt} fill className="object-cover" sizes="64px" />
             </button>
           ))}
         </div>

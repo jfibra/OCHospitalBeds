@@ -330,11 +330,11 @@ function ProductCard({ item, category, viewMode }: { item: any; category: any; v
           category.featured ? "ring-2 ring-blue-200" : ""
         }`}
       >
-        {/* Bundle Ribbon */}
+        {/* Bundle Ribbon - Horizontal from left to right */}
         {item.isBundle && (
-          <div className="absolute top-0 left-0 z-10">
-            <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 text-sm font-bold transform -rotate-45 -translate-x-4 translate-y-4 shadow-lg">
-              BUNDLE
+          <div className="absolute top-0 left-0 right-0 z-10">
+            <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 text-sm font-bold text-center shadow-lg">
+              BUNDLE DEAL
             </div>
           </div>
         )}
@@ -349,7 +349,7 @@ function ProductCard({ item, category, viewMode }: { item: any; category: any; v
           </div>
 
           {/* Content Section */}
-          <div className="lg:w-2/3 p-6">
+          <div className={`lg:w-2/3 p-6 ${item.isBundle ? "pt-12" : ""}`}>
             <div className="flex justify-between items-start mb-3">
               <h3 className="text-2xl font-bold text-blue-900">{item.name}</h3>
               <div className="text-right">
@@ -449,11 +449,11 @@ function ProductCard({ item, category, viewMode }: { item: any; category: any; v
         category.featured ? "ring-2 ring-blue-200" : ""
       }`}
     >
-      {/* Bundle Ribbon */}
+      {/* Bundle Ribbon - Horizontal from left to right */}
       {item.isBundle && (
-        <div className="absolute top-0 left-0 z-10">
-          <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 text-sm font-bold transform -rotate-45 -translate-x-4 translate-y-4 shadow-lg">
-            BUNDLE
+        <div className="absolute top-0 left-0 right-0 z-10">
+          <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 text-sm font-bold text-center shadow-lg">
+            BUNDLE DEAL
           </div>
         </div>
       )}
@@ -463,7 +463,7 @@ function ProductCard({ item, category, viewMode }: { item: any; category: any; v
         productName={item.name}
       />
 
-      <div className="p-6">
+      <div className={`p-6 ${item.isBundle ? "pt-8" : ""}`}>
         <div className="flex justify-between items-start mb-3">
           <h3 className="text-2xl font-bold text-blue-900">{item.name}</h3>
           <div className="text-right">
