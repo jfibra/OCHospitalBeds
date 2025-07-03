@@ -15,7 +15,7 @@ export default function Header() {
         <div className="bg-blue-50 py-2 px-4 -mx-4 mb-4">
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 text-sm">
             <a
-              href="tel:+1-312-298-6651"
+              href="tel:(949) 298-6651"
               className="flex items-center gap-2 text-blue-700 hover:text-blue-800 font-medium"
             >
               <Phone size={16} />

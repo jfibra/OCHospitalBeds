@@ -30,7 +30,7 @@ export default function NotFound() {
           <h3 className="text-xl font-semibold text-blue-900 mb-3">Need Help?</h3>
           <p className="text-gray-600 mb-4">If you're looking for medical equipment rentals, we're here to help.</p>
           <div className="space-y-2">
-            <a href="tel:+1-312-298-6651" className="block text-blue-600 hover:text-blue-800 font-medium">
+            <a href="tel:(949) 298-6651" className="block text-blue-600 hover:text-blue-800 font-medium">
               Call: (949) 298-6651
             </a>
             <a href="mailto:info@ochospitalbeds.com" className="block text-blue-600 hover:text-blue-800 font-medium">
