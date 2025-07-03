@@ -25,8 +25,13 @@ const products = [
           maxWeight: "350 lbs",
         },
         images: [
-          { src: "/comfio-bundle-primary-new.png", alt: "Comfio Home Care Bundle", caption: "Complete bundle package" },
+          {
+            src: "/comfio-bundle-offer-primary.png",
+            alt: "Comfio Home Care Bundle Offer",
+            caption: "Complete bundle package with special offer",
+          },
           { src: "/evenda-bed-main.jpg", alt: "Evenda Comfio bed with mattress", caption: "Evenda Comfio bed setup" },
+          { src: "/evenda-bed-angle.jpg", alt: "Evenda Comfio side view", caption: "Side view showing controls" },
           {
             src: "/dual-layer-mattress-main.webp",
             alt: "Dual-layer pressure relief mattress",
