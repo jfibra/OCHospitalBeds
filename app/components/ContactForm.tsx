@@ -76,6 +76,11 @@ export default function ContactForm({ initialType, initialProduct }: ContactForm
             event_label: formData.inquiryType || "general",
             value: 1,
           })
+
+          // Track Google Ads conversion
+          ;(window as any).gtag("event", "ads_conversion_Request_quote_1", {
+            // Add any additional event parameters here if needed
+          })
         }
       } else {
         setSubmitStatus("error")

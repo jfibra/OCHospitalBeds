@@ -18,6 +18,13 @@ export default function GoogleAnalytics() {
               page_title: document.title,
               page_location: window.location.href,
             });
+
+            // Google Ads Conversion Tracking Function
+            window.trackConversion = function() {
+              gtag('event', 'ads_conversion_Request_quote_1', {
+                // Add any additional event parameters here if needed
+              });
+            };
           `,
         }}
       />
