@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     default: "Hospital Bed Rental in Southern California",
     template: "%s | OCHospitalBeds.com",
   },
+  applicationName: "OCHospitalBeds.com",
   description: SITE.description,
   keywords: [
     "hospital bed rental",
