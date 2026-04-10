@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { Resend } from "resend"
+import { SITE_CONTACT } from "@/lib/site"
 
 export async function POST(request: NextRequest) {
   try {
@@ -9,7 +10,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error: "Email service configuration error",
-          message: "Email service is not properly configured. Please try calling us directly at (949) 298-6651.",
+          message: `Email service is not properly configured. Please try calling us directly at ${SITE_CONTACT.phoneDisplay}.`,
         },
         { status: 500 },
       )
@@ -152,8 +153,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error: "Failed to send email",
-          message:
-            "We're experiencing technical difficulties. Please call us directly at (949) 298-6651 or email info@ochospitalbeds.com.",
+          message: `We're experiencing technical difficulties. Please call us directly at ${SITE_CONTACT.phoneDisplay} or email info@ochospitalbeds.com.`,
         },
         { status: 500 },
       )
@@ -173,7 +173,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         error: "Internal server error",
-        message: "Something went wrong. Please try again or call us at (949) 298-6651.",
+        message: `Something went wrong. Please try again or call us at ${SITE_CONTACT.phoneDisplay}.`,
       },
       { status: 500 },
     )

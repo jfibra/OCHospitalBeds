@@ -6,8 +6,9 @@ import Header from "./components/Header"
 import Footer from "./components/Footer"
 import ScrollToTop from "./components/ScrollToTop"
 import PageTransition from "./components/PageTransition"
-import GoogleAnalytics from "./components/GoogleAnalytics"
+import { GoogleTagManagerBody, GoogleTagManagerHead } from "./components/GoogleTagManager"
 import { Suspense } from "react"
+import { SITE } from "@/lib/site"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -17,11 +18,11 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: {
-    default: "OCHospitalBeds.com - Hospital Bed Rentals in Southern California",
+    default: "Hospital Bed Rental in Southern California",
     template: "%s | OCHospitalBeds.com",
   },
-  description:
-    "Professional hospital bed and home medical equipment rentals delivered throughout Southern California. Serving Orange, Los Angeles, San Diego, Riverside, and San Bernardino counties with quality medical equipment for seniors, caregivers, and families.",
+  applicationName: "OCHospitalBeds.com",
+  description: SITE.description,
   keywords: [
     "hospital bed rental",
     "medical equipment rental",
@@ -46,16 +47,12 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://ochospitalbeds.com"),
-  alternates: {
-    canonical: "/",
-  },
+  metadataBase: new URL(SITE.url),
   openGraph: {
-    title: "OCHospitalBeds.com - Hospital Bed Rentals in Southern California",
-    description:
-      "Professional hospital bed and home medical equipment rentals delivered throughout Southern California. Quality medical equipment for home healthcare.",
-    url: "https://ochospitalbeds.com",
-    siteName: "OCHospitalBeds.com",
+    title: "Hospital Bed Rental in Southern California",
+    description: SITE.description,
+    url: SITE.url,
+    siteName: SITE.name,
     type: "website",
     locale: "en_US",
     images: [
@@ -69,9 +66,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "OCHospitalBeds.com - Hospital Bed Rentals in Southern California",
-    description:
-      "Professional hospital bed and home medical equipment rentals delivered throughout Southern California.",
+    title: "Hospital Bed Rental in Southern California",
+    description: SITE.description,
     images: ["/hero-image.png"],
   },
   robots: {
@@ -85,13 +81,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code",
-    // yandex: "your-yandex-verification-code",
-    // yahoo: "your-yahoo-verification-code",
-  },
   category: "Healthcare",
-  generator: "v0.dev",
 }
 
 export default function RootLayout({
@@ -102,7 +92,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="canonical" href="https://ochospitalbeds.com" />
+        <GoogleTagManagerHead />
         <link rel="manifest" href="/manifest.json" />
         <meta name="geo.region" content="US-CA" />
         <meta name="geo.placename" content="Southern California" />
@@ -110,7 +100,7 @@ export default function RootLayout({
         <meta name="ICBM" content="34.0522, -118.2437" />
       </head>
       <body className={`${poppins.className} bg-white text-gray-900`}>
-        <GoogleAnalytics />
+        <GoogleTagManagerBody />
         <PageTransition />
         <Header />
         <Suspense>

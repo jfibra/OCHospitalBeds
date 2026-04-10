@@ -1,7 +1,26 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { Phone, Video, Mail, Shield, Truck, Clock, Star } from "lucide-react"
 import StructuredData from "./components/StructuredData"
+import { SITE_CONTACT } from "@/lib/site"
+import { buildPageMetadata } from "@/lib/seo"
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Hospital Bed Rental in Southern California",
+  description:
+    "Hospital bed rental and home medical equipment delivery across Orange County, Los Angeles, San Diego, Riverside, and San Bernardino with free setup and responsive local support.",
+  path: "/",
+  image: "/hero-image.png",
+  keywords: [
+    "hospital bed rental southern california",
+    "hospital bed rental orange county",
+    "medical equipment rental los angeles",
+    "home hospital bed rental san diego",
+    "pressure relief mattress rental",
+    "hospital bed delivery and setup",
+  ],
+})
 
 export default function HomePage() {
   return (
@@ -16,9 +35,13 @@ export default function HomePage() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-blue-900 mb-6 leading-tight">
                 Hospital Bed Rentals in Southern California
               </h1>
-              <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed">
+              <p className="text-xl md:text-2xl text-gray-700 mb-4 leading-relaxed">
                 Quality hospital beds and medical equipment rentals delivered to your home throughout Orange County, Los
                 Angeles, San Diego, Riverside, and San Bernardino.
+              </p>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed max-w-3xl">
+                We&apos;re here to help families, caregivers, and patients get the right equipment quickly with free
+                delivery and setup across Southern California.
               </p>
 
               {/* Product Category Buttons */}
@@ -124,7 +147,8 @@ export default function HomePage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Ready to Get Started?</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Choose how you'd like to connect with us. We're here to help you find the right equipment for your needs.
+              Choose how you&apos;d like to connect with us. We&apos;re here to help you find the right equipment for your
+              needs.
             </p>
           </div>
 
@@ -153,12 +177,12 @@ export default function HomePage() {
               <p className="text-gray-600">Send us your questions anytime</p>
             </Link>
 
-            <a href="tel:+1-949-298-6651" className="card hover:bg-blue-50 text-center group">
+            <a href={SITE_CONTACT.phoneHref} className="card hover:bg-blue-50 text-center group">
               <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-green-200 transition-colors">
                 <Phone className="text-green-600" size={32} />
               </div>
               <h3 className="text-xl font-semibold text-blue-900 mb-2">Call Now</h3>
-              <p className="text-gray-600">(949) 298-6651</p>
+              <p className="text-gray-600">{SITE_CONTACT.phoneDisplay}</p>
             </a>
           </div>
         </div>

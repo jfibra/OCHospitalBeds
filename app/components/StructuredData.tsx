@@ -1,17 +1,34 @@
+import { SITE, SITE_CONTACT } from "@/lib/site"
+
 export default function StructuredData() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
-    name: "OCHospitalBeds",
-    description: "Professional hospital bed and medical equipment rentals in Southern California",
-    url: "https://ochospitalbeds.com",
-    telephone: "+1-949-298-6651",
+    name: SITE.shortName,
+    description: SITE.description,
+    url: SITE.url,
+    telephone: SITE_CONTACT.phonePlain,
     address: {
       "@type": "PostalAddress",
       addressRegion: "CA",
       addressCountry: "US",
       addressLocality: "Southern California",
     },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: SITE_CONTACT.phonePlain,
+      contactType: "customer service",
+      areaServed: "Southern California",
+      availableLanguage: "English",
+    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "08:00",
+        closes: "18:00",
+      },
+    ],
     areaServed: [
       {
         "@type": "State",
@@ -27,8 +44,9 @@ export default function StructuredData() {
     ],
     serviceType: "Medical Equipment Rental",
     medicalSpecialty: "Home Healthcare Equipment",
-    logo: "https://ochospitalbeds.com/logo.png",
-    image: "https://ochospitalbeds.com/hero-image.png",
+    priceRange: "$$",
+    logo: `${SITE.url}/logo.png`,
+    image: `${SITE.url}/hero-image.png`,
     sameAs: ["https://www.facebook.com/ochospitalbeds", "https://www.linkedin.com/company/ochospitalbeds"],
   }
 
@@ -38,7 +56,7 @@ export default function StructuredData() {
     serviceType: "Medical Equipment Rental",
     provider: {
       "@type": "MedicalBusiness",
-      name: "OCHospitalBeds",
+      name: SITE.shortName,
     },
     areaServed: {
       "@type": "State",

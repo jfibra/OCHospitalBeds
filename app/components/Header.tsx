@@ -4,6 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
 import { Menu, X, Phone, Mail } from "lucide-react"
+import { SITE_CONTACT } from "@/lib/site"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -15,11 +16,11 @@ export default function Header() {
         <div className="bg-blue-50 py-2 px-4 -mx-4 mb-4">
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 text-sm">
             <a
-              href="tel:(949) 298-6651"
+              href={SITE_CONTACT.phoneHref}
               className="flex items-center gap-2 text-blue-700 hover:text-blue-800 font-medium"
             >
               <Phone size={16} />
-              Call: (949) 298-6651
+              Call: {SITE_CONTACT.phoneDisplay}
             </a>
             <a
               href="mailto:info@ochospitalbeds.com"

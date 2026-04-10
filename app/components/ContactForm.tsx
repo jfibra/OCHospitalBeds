@@ -4,6 +4,7 @@ import type React from "react"
 
 import { useState, useEffect } from "react"
 import { Phone, Video, Mail, Send } from "lucide-react"
+import { SITE_CONTACT } from "@/lib/site"
 
 interface ContactFormProps {
   initialType?: string
@@ -154,7 +155,7 @@ export default function ContactForm({ initialType, initialProduct }: ContactForm
           <h3 className="text-lg font-semibold text-green-800 mb-2">Message Sent Successfully! ✅</h3>
           <p className="text-green-700">
             Thank you for contacting OCHospitalBeds! We've received your message and will respond within 24 hours. For
-            urgent needs, please call us at (949) 298-6651.
+            urgent needs, please call us at {SITE_CONTACT.phoneDisplay}.
           </p>
         </div>
       )}
@@ -168,8 +169,8 @@ export default function ContactForm({ initialType, initialProduct }: ContactForm
           <div className="space-y-2">
             <p className="text-red-700">
               📞 <strong>Call us directly:</strong>{" "}
-              <a href="tel:+1-949-298-6651" className="underline">
-                (949) 298-6651
+              <a href={SITE_CONTACT.phoneHref} className="underline">
+                {SITE_CONTACT.phoneDisplay}
               </a>
             </p>
             <p className="text-red-700">
@@ -229,7 +230,7 @@ export default function ContactForm({ initialType, initialProduct }: ContactForm
               value={formData.phone}
               onChange={handleChange}
               className="w-full px-4 py-3 text-lg border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="(949) 298-6651"
+              placeholder={SITE_CONTACT.phoneDisplay}
             />
           </div>
 

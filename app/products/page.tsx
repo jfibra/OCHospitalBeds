@@ -1,44 +1,28 @@
 import type { Metadata } from "next"
 import ProductsClientPage from "./ProductsClientPage"
+import ProductCatalogStructuredData from "../components/ProductCatalogStructuredData"
+import { buildPageMetadata } from "@/lib/seo"
 
-export const metadata: Metadata = {
-  title: "Medical Equipment Rentals | OC Hospital Beds - Hospital Beds & Accessories",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Hospital Bed Rental Products in Southern California",
   description:
-    "Rent quality hospital beds, medical mattresses, and accessories for home care. Professional delivery and setup throughout Orange County. Call (949) 298-6651 for pricing.",
+    "Compare hospital bed rental bundles, professional home care beds, medical mattresses, and bedside accessories with delivery and setup across Southern California.",
+  path: "/products",
+  image: "/comfio-bundle-offer-primary.png",
   keywords: [
-    "hospital bed rental",
-    "medical equipment rental",
-    "home care beds",
-    "pressure relief mattress",
-    "overbed table rental",
-    "Orange County medical equipment",
-    "hospital bed delivery",
-    "medical bed rental",
+    "hospital bed rental products southern california",
+    "hospital bed rental orange county",
+    "medical mattress rental los angeles",
+    "overbed table rental southern california",
+    "hospital bed delivery and setup",
   ],
-  openGraph: {
-    title: "Medical Equipment Rentals | OC Hospital Beds",
-    description:
-      "Quality hospital beds and medical equipment rentals for home care. Professional delivery and setup in Orange County.",
-    type: "website",
-    url: "https://ochospitalbeds.com/products",
-    images: [
-      {
-        url: "/comfio-bundle-primary.png",
-        width: 1200,
-        height: 630,
-        alt: "Medical equipment rentals",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Medical Equipment Rentals | OC Hospital Beds",
-    description:
-      "Quality hospital beds and medical equipment rentals for home care. Professional delivery and setup in Orange County.",
-    images: ["/comfio-bundle-primary.png"],
-  },
-}
+})
 
 export default function ProductsPage() {
-  return <ProductsClientPage />
+  return (
+    <>
+      <ProductCatalogStructuredData />
+      <ProductsClientPage />
+    </>
+  )
 }
