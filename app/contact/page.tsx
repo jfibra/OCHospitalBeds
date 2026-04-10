@@ -1,11 +1,20 @@
 import type { Metadata } from "next"
 import ContactPageClient from "./ContactPageClient"
+import { buildPageMetadata } from "@/lib/seo"
 
-export const metadata: Metadata = {
-  title: "Contact Us - OCHospitalBeds.com | Medical Equipment Rentals",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Contact Our Southern California Hospital Bed Rental Team",
   description:
-    "Contact OCHospitalBeds.com for hospital bed and medical equipment rentals. Schedule a call, video consultation, or send us an email.",
-}
+    "Contact OCHospitalBeds for hospital bed rental pricing, delivery and setup questions, and medical equipment availability across Southern California.",
+  path: "/contact",
+  image: "/hero-image.png",
+  keywords: [
+    "contact hospital bed rental orange county",
+    "hospital bed pricing southern california",
+    "medical equipment delivery contact",
+    "hospital bed setup support",
+  ],
+})
 
 export default function ContactPage() {
   return <ContactPageClient />

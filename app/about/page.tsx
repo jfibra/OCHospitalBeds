@@ -1,12 +1,22 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 import Image from "next/image"
 import { Shield, Heart, Users, MapPin } from "lucide-react"
+import { buildPageMetadata } from "@/lib/seo"
 
-export const metadata: Metadata = {
-  title: "About Us - OCHospitalBeds.com | Medical Equipment Rentals",
+export const metadata: Metadata = buildPageMetadata({
+  title: "About Our Hospital Bed Rental Service in Southern California",
   description:
-    "Learn about OCHospitalBeds.com and our mission to provide quality medical equipment rentals to families, seniors, and caregivers.",
-}
+    "Learn how OCHospitalBeds supports families, caregivers, and patients with hospital bed rental, delivery, setup, and home medical equipment service across Southern California.",
+  path: "/about",
+  image: "/healthcare-team.jpg",
+  keywords: [
+    "about hospital bed rental southern california",
+    "orange county medical equipment company",
+    "hospital bed delivery and setup",
+    "home care equipment team",
+  ],
+})
 
 export default function AboutPage() {
   return (
@@ -16,7 +26,7 @@ export default function AboutPage() {
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6">About OCHospitalBeds</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We're dedicated to helping families and caregivers provide the best possible care at home with quality
+            We&apos;re dedicated to helping families and caregivers provide the best possible care at home with quality
             medical equipment rentals.
           </p>
         </div>
@@ -33,8 +43,8 @@ export default function AboutPage() {
               </p>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                 Our team understands the challenges that come with caring for loved ones, especially seniors who prefer
-                to recover and age in place. That's why we've made it our mission to remove the barriers to accessing
-                quality medical equipment.
+                to recover and age in place. That&apos;s why we&apos;ve made it our mission to remove the barriers to
+                accessing quality medical equipment.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex items-center gap-3">
@@ -150,10 +160,10 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <p className="text-lg text-gray-600 mt-6">
-                  Don't see your area listed?{" "}
-                  <a href="/contact" className="text-blue-600 hover:text-blue-800 font-medium">
+                  Don&apos;t see your area listed?{" "}
+                  <Link href="/contact" className="text-blue-600 hover:text-blue-800 font-medium">
                     Contact us
-                  </a>{" "}
+                  </Link>{" "}
                   - we may still be able to help!
                 </p>
               </div>

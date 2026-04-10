@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Search, Grid, List, Filter, X } from "lucide-react"
 import ProductContactOptions from "../components/ProductContactOptions"
 import ProductImageGallery from "../components/ProductImageGallery"
+import { SITE_CONTACT } from "@/lib/site"
 
 const products = [
   {
@@ -67,12 +68,12 @@ const products = [
         images: [
           {
             src: "/professional-bundle-primary-new.png",
-            alt: "Professional Care Bundle",
-            caption: "Complete professional bundle",
+            alt: "Professional hospital bed rental bundle with mattress and bedside accessories",
+            caption: "Complete professional bundle for advanced home care",
           },
           {
             src: "/professional-hospital-bed-main.png",
-            alt: "Professional hospital bed with mattress",
+            alt: "Professional hospital bed rental with pressure relief mattress",
             caption: "Advanced hospital bed setup",
           },
           {
@@ -82,7 +83,7 @@ const products = [
           },
           {
             src: "/new-overbed-table.jpg",
-            alt: "Adjustable overbed table",
+            alt: "Adjustable overbed table rental for hospital bed setup",
             caption: "Height adjustable overbed table",
           },
         ],
@@ -115,9 +116,9 @@ const products = [
           maxWeight: "350 lbs",
         },
         images: [
-          { src: "/evenda-bed-main.jpg", alt: "Evenda Comfio bed frame", caption: "Wood-finished home care bed frame" },
+          { src: "/evenda-bed-main.jpg", alt: "Evenda Comfio home care hospital bed rental", caption: "Wood-finished home care bed frame" },
           { src: "/evenda-bed-angle.jpg", alt: "Evenda Comfio side view", caption: "Side view showing controls" },
-          { src: "/evenda-remote.jpg", alt: "Evenda remote control", caption: "Easy-to-use remote control" },
+          { src: "/evenda-remote.jpg", alt: "Evenda hospital bed remote control for home care", caption: "Easy-to-use remote control" },
         ],
         features: [
           "Simplified hand control for easy operation",
@@ -142,21 +143,21 @@ const products = [
         images: [
           {
             src: "/professional-hospital-bed-main.png",
-            alt: "Professional hospital bed frame",
+            alt: "Professional hospital bed rental frame for home recovery",
             caption: "Medical-grade hospital bed frame",
           },
-          { src: "/stryker-hospital-bed.jpg", alt: "Stryker hospital bed", caption: "Advanced Stryker hospital bed" },
+          { src: "/stryker-hospital-bed.jpg", alt: "Stryker-style hospital bed rental for home care", caption: "Advanced Stryker hospital bed" },
           {
             src: "/ibed-awareness-panel.jpg",
-            alt: "iBed Awareness control panel",
+            alt: "iBed Awareness control panel for professional hospital bed",
             caption: "iBed Awareness monitoring system",
           },
           {
             src: "/precision-side-rails.jpg",
-            alt: "Precision side rails",
+            alt: "Hospital bed precision side rails for patient safety",
             caption: "Precision side rails with intermediate positions",
           },
-          { src: "/open-architecture-bed.jpg", alt: "Open architecture design", caption: "Open architecture platform" },
+          { src: "/open-architecture-bed.jpg", alt: "Open architecture hospital bed platform", caption: "Open architecture platform" },
         ],
         features: [
           "iBed Awareness monitoring system",
@@ -188,17 +189,17 @@ const products = [
         images: [
           {
             src: "/pressure-relief-mattress-main.png",
-            alt: "AtmosAir Velaris pressure relief mattress",
+            alt: "AtmosAir Velaris pressure relief mattress rental",
             caption: "Advanced alternating pressure system",
           },
           {
             src: "/pressure-relief-mattress-setup.png",
-            alt: "Pressure mattress home setup",
+            alt: "Pressure relief mattress installed in a home care setup",
             caption: "Complete home care installation",
           },
           {
             src: "/pressure-relief-mattress-detail.png",
-            alt: "Pressure mattress surface detail",
+            alt: "Pressure relief mattress surface detail showing alternating cells",
             caption: "Alternating pressure cells",
           },
         ],
@@ -226,12 +227,12 @@ const products = [
         images: [
           {
             src: "/foam-mattress-main.png",
-            alt: "High-density foam mattress",
+            alt: "High-density foam medical mattress rental",
             caption: "Medical-grade foam construction",
           },
           {
             src: "/dual-layer-mattress-main.webp",
-            alt: "Dual-layer pressure relief mattress",
+            alt: "Dual-layer pressure relief foam mattress for hospital bed rental",
             caption: "Anti-Microbial Cover Included",
           },
         ],
@@ -265,7 +266,7 @@ const products = [
         images: [
           {
             src: "/new-overbed-table.jpg",
-            alt: "Adjustable overbed table",
+            alt: "Adjustable overbed table rental for bedside meals and reading",
             caption: "Height and tilt adjustable design",
           },
         ],
@@ -795,7 +796,7 @@ export default function ProductsClientPage() {
         <section className="bg-gradient-to-r from-blue-600 to-sky-600 rounded-3xl p-8 md:p-12 text-center text-white shadow-2xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Need Help Choosing the Right Equipment?</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto leading-relaxed opacity-90">
-            Our experienced team understands that every patient's needs are unique. We'll help you select the perfect
+            Our experienced team understands that every patient&apos;s needs are unique. We&apos;ll help you select the perfect
             equipment and ensure proper setup in your home.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -806,10 +807,10 @@ export default function ProductsClientPage() {
               Get Free Consultation
             </Link>
             <a
-              href="tel:+1-949-298-6651"
+              href={SITE_CONTACT.phoneHref}
               className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-600 font-semibold py-4 px-8 rounded-xl text-lg transition-colors duration-200"
             >
-              Call (949) 298-6651
+              Call {SITE_CONTACT.phoneDisplay}
             </a>
           </div>
         </section>

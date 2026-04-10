@@ -3,6 +3,7 @@ import { useSearchParams } from "next/navigation"
 import { Suspense } from "react"
 import ContactForm from "../components/ContactForm"
 import { Phone, Mail, MapPin, Clock } from "lucide-react"
+import { SITE_CONTACT } from "@/lib/site"
 
 function ContactPageContent() {
   return (
@@ -12,7 +13,8 @@ function ContactPageContent() {
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4">Contact Us</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to get the medical equipment you need? We're here to help. Choose how you'd like to connect with us.
+            Ready to get the medical equipment you need? We&apos;re here to help. Choose how you&apos;d like to connect with
+            us.
           </p>
         </div>
 
@@ -24,8 +26,8 @@ function ContactPageContent() {
             </div>
             <h3 className="text-xl font-semibold text-blue-900 mb-2">Call Us</h3>
             <p className="text-gray-600 mb-4">Speak with our team directly</p>
-            <a href="tel:(949) 298-6651" className="btn-primary">
-              (949) 298-6651
+            <a href={SITE_CONTACT.phoneHref} className="btn-primary">
+              {SITE_CONTACT.phoneDisplay}
             </a>
           </div>
 
