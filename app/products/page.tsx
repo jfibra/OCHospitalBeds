@@ -18,6 +18,7 @@ export const metadata: Metadata = buildPageMetadata({
   ],
 })
 
+
 export default function ProductsPage() {
   return (
     <>
