@@ -18,6 +18,7 @@ export const metadata: Metadata = buildPageMetadata({
   ],
 })
 
+
 export default function AboutPage() {
   return (
     <div className="py-12">

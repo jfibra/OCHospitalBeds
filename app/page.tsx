@@ -22,6 +22,7 @@ export const metadata: Metadata = buildPageMetadata({
   ],
 })
 
+
 export default function HomePage() {
   return (
     <>
@@ -89,6 +90,7 @@ export default function HomePage() {
                 width={600}
                 height={400}
                 className="rounded-2xl shadow-2xl"
+                style={{ height: "auto" }}
                 priority
               />
             </div>
